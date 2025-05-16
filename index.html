@@ -1,11 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>陈政的技能</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zheng Chen Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <div class="flourish-embed flourish-word-cloud" data-src="visualisation/21835104"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21835104/thumbnail" width="100%" alt="word-cloud visualization" /></noscript></div>
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed">
+    <ul class="menu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="src/cv_cn.pdf" download>Download CV</a></li>
+      <li><a href="#" id="toggle-dark">🌙</a></li>
+      <li><a href="#" id="toggle-lang">中 / EN</a></li>
+    </ul>
+  </nav>
+
+  <!-- Cover Section -->
+  <section id="cover-section" class="cover-section">
+    <div class="cover-bg" id="cover-bg">
+      <div class="bg-slide" style="background-image: url('src/photo/bg1.jpg');"></div>
+      <div class="bg-slide" style="background-image: url('src/photo/bg2.PNG');"></div>
+      <div class="bg-slide" style="background-image: url('src/photo/bg3.jpg');"></div>
+    </div>
+    <div class="cover-content">
+      <h1 class="headline-name fade-up">I'm<br/>Zheng Chen</h1>
+      <p class="headline-desc fade-up">
+        A designer and researcher crafting interactive systems that blend AI, spatial storytelling, and everything magic.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section: Title + Content with Background -->
+  <section id="projects-section" class="projects-section">
+
+    <!-- Projects Section Title -->
+    <div class="section-header fade-up">
+      <h2 class="section-title">Selected Projects</h2>
+      <p class="section-subtitle">
+        A collection of my recent work in interaction, intelligent systems, and mobility.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <section id="projects" class="projects-container">
+
+      <section class="project-block fade-up">
+        <div class="project-info">
+          <h2>Project Title 1</h2>
+          <p>A short description of this project goes here. It can be anything about your design or development process.</p>
+        </div>
+        <div class="project-img">
+          <img src="src/photo/bg1.jpg" alt="Project 1">
+        </div>
+      </section>
+
+      <section class="project-block fade-up">
+        <div class="project-info">
+          <h2>Project Title 2</h2>
+          <p>This is another cool project you’ve worked on. Explain what it is, and what you did.</p>
+        </div>
+        <div class="project-img">
+          <img src="src/photo/bg2.PNG" alt="Project 2">
+        </div>
+      </section>
+
+      <section class="project-block fade-up">
+        <div class="project-info">
+          <h2>Project Title 3</h2>
+          <p>Highlight something that shows your interaction or mobility design skills.</p>
+        </div>
+        <div class="project-img">
+          <img src="src/photo/bg3.jpg" alt="Project 3">
+        </div>
+      </section>
+
+    </section>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <p>© 2025 Zheng Chen</p>
+      <p>Designing for Mobility, Interaction & Intelligent Systems</p>
+      <p>Based in China · Switzerland · Italy</p>
+    </div>
+    <div class="footer-right">
+      <p>
+        <a href="mailto:leonardochen00@gmail.com">Email</a> |
+        <a href="https://github.com/yourname">Github</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
