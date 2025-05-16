@@ -8,30 +8,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Navbar -->
-  <nav id="navbar" class="fixed">
-    <ul class="menu">
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="logo">
+      <a href="index.html">
+        <img src="src/assets/cz_logo.png" alt="CZ Logo"/>
+      </a>
+    </div>
+
+    <!-- Hamburger (Mobile Only) -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
+
+    <!-- Menu -->
+    <ul class="menu" id="menu">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="src/cv_cn.pdf" download>Download CV</a></li>
+      <li><a href="src/cv_cn.pdf">CV</a></li>
       <li><a href="#" id="toggle-dark">🌙</a></li>
       <li><a href="#" id="toggle-lang">中 / EN</a></li>
+      <li class="close-btn" id="close-menu">&times;</li>
     </ul>
-  </nav>
+  </div>
+</nav>
 
   <!-- Cover Section -->
   <section id="cover-section" class="cover-section">
     <div class="cover-bg" id="cover-bg">
-      <div class="bg-slide" style="background-image: url('src/photo/bg1.jpg');"></div>
-      <div class="bg-slide" style="background-image: url('src/photo/bg2.PNG');"></div>
-      <div class="bg-slide" style="background-image: url('src/photo/bg3.jpg');"></div>
+      <div class="bg-slide" style="background-image: url('src/resource/bg2.PNG');"></div>
+      <div class="bg-slide" style="background-image: url('src/resource/bg3.jpg');"></div>
+      <div class="bg-slide" style="background-image: url('src/resource/air_purier.PNG');"></div>
+      <div class="bg-slide" style="background-image: url('src/resource/bg1.jpg');"></div>
     </div>
     <div class="cover-content">
       <h1 class="headline-name fade-up">I'm<br/>Zheng Chen</h1>
       <p class="headline-desc fade-up">
-        A designer and researcher crafting interactive systems that blend AI, spatial storytelling, and everything magic.
+        An <strong>Interdisciplinary</strong> designer and researcher crafting interactive systems that blend AI, spatial experience, and everything magic.
       </p>
     </div>
   </section>
@@ -48,46 +64,95 @@
     </div>
 
     <!-- Projects Grid -->
-    <section id="projects" class="projects-container">
-
-      <section class="project-block fade-up">
+    <a href="project1.html" class="project-link">
+      <section class="project-block fade-up" data-category="interaction ai">
         <div class="project-info">
-          <h2>Project Title 1</h2>
-          <p>A short description of this project goes here. It can be anything about your design or development process.</p>
+          <h2 class="en">Future Travel</h2>
+          <h2 class="cn hidden">未来旅行</h2>
+          <p class="en">A speculative design installation that uses AI to generate travel destinations based on your movement and touch.</p>
+          <p class="cn hidden">一个结合人工智能与互动的装置，透过移动和触碰生成未来的旅行地点。</p>
         </div>
         <div class="project-img">
-          <img src="src/photo/bg1.jpg" alt="Project 1">
+          <img src="src/resource/bg1.jpg" alt="Project 1" />
         </div>
       </section>
+    </a>
 
-      <section class="project-block fade-up">
+    <a href="project1.html" class="project-link">
+      <section class="project-block fade-up" data-category="interaction ai">
         <div class="project-info">
-          <h2>Project Title 2</h2>
-          <p>This is another cool project you’ve worked on. Explain what it is, and what you did.</p>
+          <h2 class="en">Future Travel</h2>
+          <h2 class="cn hidden">未来旅行</h2>
+          <p class="en">A speculative design installation that uses AI to generate travel destinations based on your movement and touch.</p>
+          <p class="cn hidden">一个结合人工智能与互动的装置，透过移动和触碰生成未来的旅行地点。</p>
         </div>
         <div class="project-img">
-          <img src="src/photo/bg2.PNG" alt="Project 2">
+          <img src="src/resource/bg2.png" alt="Project 1" />
         </div>
       </section>
-
-      <section class="project-block fade-up">
+    </a>
+    
+    <a href="project1.html" class="project-link">
+      <section class="project-block fade-up" data-category="interaction ai">
         <div class="project-info">
-          <h2>Project Title 3</h2>
-          <p>Highlight something that shows your interaction or mobility design skills.</p>
+          <h2 class="en">Future Travel</h2>
+          <h2 class="cn hidden">未来旅行</h2>
+          <p class="en">A speculative design installation that uses AI to generate travel destinations based on your movement and touch.</p>
+          <p class="cn hidden">一个结合人工智能与互动的装置，透过移动和触碰生成未来的旅行地点。</p>
         </div>
         <div class="project-img">
-          <img src="src/photo/bg3.jpg" alt="Project 3">
+          <img src="src/resource/bg3.jpg" alt="Project 1" />
         </div>
       </section>
+    </a>
 
-    </section>
-  </section>
+    <a href="project1.html" class="project-link">
+      <section class="project-block fade-up" data-category="interaction ai">
+        <div class="project-info">
+          <h2 class="en">Future Travel</h2>
+          <h2 class="cn hidden">未来旅行</h2>
+          <p class="en">A speculative design installation that uses AI to generate travel destinations based on your movement and touch.</p>
+          <p class="cn hidden">一个结合人工智能与互动的装置，透过移动和触碰生成未来的旅行地点。</p>
+        </div>
+        <div class="project-img">
+          <img src="src/resource/air_purier.PNG" alt="Project 1" />
+        </div>
+      </section>
+    </a>
+
+    <a href="project1.html" class="project-link">
+      <section class="project-block fade-up" data-category="interaction ai">
+        <div class="project-info">
+          <h2 class="en">Future Travel</h2>
+          <h2 class="cn hidden">未来旅行</h2>
+          <p class="en">A speculative design installation that uses AI to generate travel destinations based on your movement and touch.</p>
+          <p class="cn hidden">一个结合人工智能与互动的装置，透过移动和触碰生成未来的旅行地点。</p>
+        </div>
+        <div class="project-img">
+          <img src="src/resource/bg1.jpg" alt="Project 1" />
+        </div>
+      </section>
+    </a>
+
+    <a href="project1.html" class="project-link">
+      <section class="project-block fade-up" data-category="interaction ai">
+        <div class="project-info">
+          <h2 class="en">Future Travel</h2>
+          <h2 class="cn hidden">未来旅行</h2>
+          <p class="en">A speculative design installation that uses AI to generate travel destinations based on your movement and touch.</p>
+          <p class="cn hidden">一个结合人工智能与互动的装置，透过移动和触碰生成未来的旅行地点。</p>
+        </div>
+        <div class="project-img">
+          <img src="src/resource/web.PNG" alt="Project 1" />
+        </div>
+      </section>
+    </a>
 
   <!-- Footer -->
   <footer>
     <div class="footer-left">
       <p>© 2025 Zheng Chen</p>
-      <p>Designing for Mobility, Interaction & Intelligent Systems</p>
+      <p>Designing for Intelligent Systems, Interaction &  Mobility</p>
       <p>Based in China · Switzerland · Italy</p>
     </div>
     <div class="footer-right">
