@@ -75,7 +75,9 @@ body.dark-mode .logo img {
 
 /* ===== Navbar Buttons ===== */
 .menu li a,
-.toggle-right-controls a {
+.toggle-right-controls a,
+#toggle-dark,
+#toggle-lang {
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.2px;
@@ -93,7 +95,9 @@ body.dark-mode .logo img {
 .menu li a:hover,
 .menu li a.active,
 .toggle-right-controls a:hover,
-.toggle-right-controls a.active {
+.toggle-right-controls a.active,
+#toggle-dark:hover,
+#toggle-lang:hover {
   color: #fff;
   background: rgba(255, 255, 255, 0.20);
   box-shadow: 0 2px 12px rgba(255,255,255,0.2), inset 0 0 0 1px rgba(255,255,255,0.3);
@@ -190,14 +194,24 @@ body.dark-mode .filter-btn.active {
   box-shadow: 0 2px 12px rgba(255,255,255,0.2), inset 0 0 0 1px rgba(255,255,255,0.3);
 }
 
-body.dark-mode .menu li a {
+body.dark-mode .menu li a,
+body.dark-mode .toggle-right-controls a,
+body.dark-mode #toggle-dark,
+body.dark-mode #toggle-lang {
   color: #eeeeeecc;
   background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 body.dark-mode .menu li a:hover,
-body.dark-mode .menu li a.active {
+body.dark-mode .menu li a.active,
+body.dark-mode .toggle-right-controls a:hover,
+body.dark-mode .toggle-right-controls a.active,
+body.dark-mode #toggle-dark:hover,
+body.dark-mode #toggle-lang:hover {
+  color: #fff;
   background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 12px rgba(255,255,255,0.1), inset 0 0 0 1px rgba(255,255,255,0.2);
 }
 
 /* ===== Hamburger ===== */
