@@ -58,25 +58,58 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('close-menu');
   const menuLinks = document.querySelectorAll('#menu a');
 
-  if (hamburger && menu && closeBtn) {
-    hamburger.addEventListener('click', () => {
+  // 添加菜单状态管理
+  let isMenuOpen = false;
+
+  function openMenu() {
+    if (!isMenuOpen) {
       menu.classList.add('show');
-      hamburger.classList.add('hide'); // ✅ 打开菜单时隐藏按钮
+      hamburger.classList.add('hide');
       document.body.style.overflow = 'hidden';
-    });
+      isMenuOpen = true;
+    }
+  }
 
-    closeBtn.addEventListener('click', () => {
+  function closeMenu() {
+    if (isMenuOpen) {
       menu.classList.remove('show');
-      hamburger.classList.remove('hide'); // ✅ 关闭菜单时恢复按钮
+      hamburger.classList.remove('hide');
       document.body.style.overflow = '';
+      isMenuOpen = false;
+    }
+  }
+
+  // 添加点击事件监听器
+  if (hamburger && menu && closeBtn) {
+    hamburger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openMenu();
     });
 
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMenu();
+    });
+
+    // 点击菜单项关闭菜单
     menuLinks.forEach(link => {
       link.addEventListener('click', () => {
-        menu.classList.remove('show');
-        hamburger.classList.remove('hide'); // ✅ 点菜单项也恢复按钮
-        document.body.style.overflow = '';
+        closeMenu();
       });
+    });
+
+    // 点击菜单外部区域关闭菜单
+    document.addEventListener('click', (e) => {
+      if (isMenuOpen && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // 添加 ESC 键关闭菜单
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        closeMenu();
+      }
     });
   }
 
