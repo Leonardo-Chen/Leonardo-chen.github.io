@@ -165,8 +165,6 @@ body.dark-mode #navbar {
     background: rgba(255, 255, 255, 0.08);
     border-radius: 1.6rem;
     transition: all 0.25s ease;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
   }
@@ -275,10 +273,10 @@ body.dark-mode #navbar {
     justify-content: center;
     align-items: center;
     gap: 2.2rem;
-    background: rgba(24, 68, 227, 0.95);
+    background: rgba(17, 39, 118, 0.6);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
-    z-index: 1001;
+    z-index: 1004;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -780,16 +778,16 @@ body.dark-mode .footer-contact a {
     top: 50%;
     transform: translateY(-50%);
     padding: 0.4rem;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 0.8rem;
+    /* background: rgba(255, 255, 255, 0.08); */
+    /* border-radius: 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0.14);
     -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px); */
     margin-right: 1rem;
   }
 
   .hamburger:hover {
-    background: rgba(255, 255, 255, 0.15);
+    /* background: rgba(255, 255, 255, 0.15); */
   }
 
   #menu.show {
@@ -803,10 +801,9 @@ body.dark-mode .footer-contact a {
     justify-content: center;
     align-items: center;
     gap: 2.2rem;
-    background: rgba(24, 68, 227, 0.95);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
-    z-index: 1001;
+    z-index: 1004;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -842,12 +839,12 @@ body.dark-mode .footer-contact a {
 
   /* Dark mode mobile adjustments */
   body.dark-mode .hamburger {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    /* background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14); */
   }
 
   body.dark-mode .hamburger:hover {
-    background: rgba(255, 255, 255, 0.12);
+    /* background: rgba(255, 255, 255, 0.12); */
   }
 
   body.dark-mode #menu.show {
@@ -1034,7 +1031,6 @@ body.dark-mode .toggle-right-controls a.active {
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    background: none;
     border: none;
     width: auto;
     height: auto;
@@ -1054,7 +1050,7 @@ body.dark-mode .toggle-right-controls a.active {
     background: rgba(24, 68, 227, 0.95);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
-    z-index: 1001;
+    z-index: 1004;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -1076,8 +1072,6 @@ body.dark-mode .toggle-right-controls a.active {
     background: rgba(255, 255, 255, 0.08);
     border-radius: 1.6rem;
     transition: all 0.25s ease;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
   }
