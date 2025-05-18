@@ -6,6 +6,7 @@
   <title>Contact | Zheng Chen Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
 <!-- Navbar -->
@@ -20,6 +21,7 @@
 
     <!-- Menu -->
     <ul class="menu" id="menu">
+      <div class="close-btn" id="close-menu">×</div>
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="about.html">About</a></li>
@@ -30,9 +32,11 @@
     <!-- Controls -->
     <div class="toggle-right-controls">
       <a href="#" id="toggle-dark">🌙</a>
-      <a href="#" id="toggle-lang">中 / EN</a>
-      <div class="hamburger" id="hamburger">&#9776;</div>
+      <a href="#" id="toggle-lang">中/EN</a>
     </div>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
   </div>
 </nav>
 
@@ -42,10 +46,43 @@
       <h2 class="section-title">Get in Touch</h2>
       <p class="section-subtitle">Feel free to reach out if you'd like to collaborate or just say hi!</p>
 
-      <div class="contact-methods">
-        <p><strong>Email:</strong> <a href="mailto:leonardochen00@gmail.com">leonardochen00@gmail.com</a></p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/yourname" target="_blank">github.com/yourname</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourname" target="_blank">linkedin.com/in/yourname</a></p>
+      <div class="business-card">
+        <div class="card-header">
+          <div class="profile-info">
+            <h3>Zheng Chen</h3>
+            <p class="title">Designer & Developer</p>
+          </div>
+        </div>
+        
+        <div class="card-body">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div class="contact-info">
+              <strong>Email</strong>
+              <a href="mailto:leonardochen00@gmail.com" class="contact-link">leonardochen00@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fab fa-github"></i>
+            <div class="contact-info">
+              <strong>GitHub</strong>
+              <a href="https://github.com/yourname" target="_blank" class="contact-link">github.com/yourname</a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fab fa-linkedin"></i>
+            <div class="contact-info">
+              <strong>LinkedIn</strong>
+              <a href="https://linkedin.com/in/yourname" target="_blank" class="contact-link">linkedin.com/in/yourname</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <p>Based in China · Switzerland · Italy</p>
+        </div>
       </div>
     </div>
   </section>

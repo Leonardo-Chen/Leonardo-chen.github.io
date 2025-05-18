@@ -32,11 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== Language Toggle Button =====
   const toggleLang = document.getElementById('toggle-lang');
+  let isChinese = false;
+  
   if (toggleLang) {
     toggleLang.addEventListener('click', () => {
-      const current = toggleLang.innerText.trim();
-      toggleLang.innerText = current === '中 / EN' ? 'EN / 中' : '中 / EN';
-      alert('Language switching is not yet implemented.');
+      isChinese = !isChinese;
+      toggleLang.innerText = isChinese ? 'EN / 中' : '中 / EN';
+      document.querySelectorAll('.en').forEach(el => el.classList.toggle('hidden', isChinese));
+      document.querySelectorAll('.cn').forEach(el => el.classList.toggle('hidden', !isChinese));
     });
   }
 
@@ -58,71 +61,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('close-menu');
   const menuLinks = document.querySelectorAll('#menu a');
 
-  // 添加菜单状态管理
-  let isMenuOpen = false;
-
-  function openMenu() {
-    if (!isMenuOpen) {
+  if (hamburger && menu && closeBtn) {
+    const openMenu = () => {
       menu.classList.add('show');
       hamburger.classList.add('hide');
       document.body.style.overflow = 'hidden';
-      isMenuOpen = true;
-    }
-  }
+    };
 
-  function closeMenu() {
-    if (isMenuOpen) {
+    const closeMenu = () => {
       menu.classList.remove('show');
       hamburger.classList.remove('hide');
       document.body.style.overflow = '';
-      isMenuOpen = false;
-    }
-  }
+    };
 
-  // 添加点击事件监听器
-  if (hamburger && menu && closeBtn) {
-    hamburger.addEventListener('click', (e) => {
-      e.preventDefault();
-      openMenu();
-    });
-
-    closeBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeMenu();
-    });
-
-    // 点击菜单项关闭菜单
+    hamburger.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    
     menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
+      link.addEventListener('click', closeMenu);
     });
 
-    // 点击菜单外部区域关闭菜单
+    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (isMenuOpen && !menu.contains(e.target) && !hamburger.contains(e.target)) {
-        closeMenu();
-      }
-    });
-
-    // 添加 ESC 键关闭菜单
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isMenuOpen) {
+      if (menu.classList.contains('show') && 
+          !menu.contains(e.target) && 
+          !hamburger.contains(e.target)) {
         closeMenu();
       }
     });
   }
-
-});
-
-// ===== Language Toggle =====
-const langToggle = document.getElementById('toggle-lang');
-let isChinese = false;
-
-langToggle.addEventListener('click', () => {
-  isChinese = !isChinese;
-  document.querySelectorAll('.en').forEach(el => el.classList.toggle('hidden', isChinese));
-  document.querySelectorAll('.cn').forEach(el => el.classList.toggle('hidden', !isChinese));
 });
 
 // ===== Filter Functionality =====
@@ -149,6 +116,5 @@ filterButtons.forEach(button => {
     });
   });
 });
-
 
 //language traslation system building

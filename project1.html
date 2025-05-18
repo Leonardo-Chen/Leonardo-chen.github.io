@@ -21,6 +21,7 @@
 
     <!-- Menu -->
     <ul class="menu" id="menu">
+      <div class="close-btn" id="close-menu">×</div>
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html" class="active">Projects</a></li>
       <li><a href="about.html">About</a></li>
@@ -31,23 +32,24 @@
     <!-- Controls -->
     <div class="toggle-right-controls">
       <a href="#" id="toggle-dark">🌙</a>
-      <a href="#" id="toggle-lang">中 / EN</a>
-      <div class="hamburger" id="hamburger">&#9776;</div>
     </div>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
   </div>
 </nav>
 
+<!-- Back Button -->
+<div style="padding: 2rem 6vw;">
+  <a href="projects.html" class="btn" style="text-decoration: none; font-weight: 500;">← Back to Projects</a>
+</div>
+
 <!-- Project Detail -->
 <section class="project-detail container fade-up" style="padding: 4rem 1rem; max-width: 900px; margin: auto;">
-  <h1 class="en" style="font-size: 2.5rem; font-weight: 700;">Future Travel</h1>
-  <h1 class="cn hidden" style="font-size: 2.5rem; font-weight: 700;">未来旅行</h1>
+  <h1 style="font-size: 2.5rem; font-weight: 700;">Future Travel</h1>
 
-  <p class="en" style="margin-top: 1.5rem;">
+  <p style="margin-top: 1.5rem;">
     <strong>Future Travel</strong> is a speculative installation that uses AI and body movement to generate travel destinations on a projected map. Inspired by the fusion of physical motion and digital imagination, it allows users to explore non-existent cities through interactive gestures.
-  </p>
-
-  <p class="cn hidden" style="margin-top: 1.5rem;">
-    <strong>《未来旅行》</strong> 是一个结合 AI 与肢体动作的互动装置，用户通过移动身体探索投影地图中由 AI 生成的虚构旅行目的地。它融合了数字幻想与现实互动，激发人们对旅行未来的想象。
   </p>
 
   <div style="margin-top: 2rem; border-radius: 16px; overflow: hidden;">
@@ -56,17 +58,12 @@
 
   <!-- 可添加更多部分 -->
   <div style="margin-top: 2.5rem;">
-    <h3 class="en">Technologies Used</h3>
-    <h3 class="cn hidden">使用技术</h3>
+    <h3>Technologies Used</h3>
     <ul>
       <li>Arduino + Motion Sensors</li>
       <li>AI Image Generation (e.g. Stable Diffusion)</li>
       <li>Projection Mapping</li>
     </ul>
-  </div>
-
-  <div style="margin-top: 3rem;">
-    <a href="projects.html" class="btn" style="text-decoration: none; font-weight: 500;">← Back to Projects</a>
   </div>
 </section>
 
