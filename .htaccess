@@ -1,0 +1,11 @@
+ErrorDocument 404 /under_development.html
+
+# Enable URL rewriting
+RewriteEngine On
+
+# If the requested file or directory doesn't exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect to under_development.html
+RewriteRule ^(.*)$ /under_development.html [L] 

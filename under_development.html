@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Development | Zheng Chen Portfolio</title>
+    <link rel="icon" type="image/png" href="src/assets/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+        .development-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .development-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .development-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .development-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .development-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .back-home-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-home-btn svg {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="development-container">
+        <div class="development-content">
+            <div class="development-icon">🚧</div>
+            <h1 class="development-title">Under Development</h1>
+            <p class="development-text">
+                This page is currently under construction. We're working hard to bring you something amazing. 
+                Please check back later!
+            </p>
+            <a href="index.html" class="back-home-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // 检查是否是404页面
+        if (window.location.pathname !== '/under_development.html') {
+            // 保存当前URL到sessionStorage
+            sessionStorage.setItem('previousPage', window.location.href);
+            
+            // 重定向到开发中页面
+            window.location.href = '/under_development.html';
+        }
+
+        // 添加返回上一页的功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const backHomeBtn = document.querySelector('.back-home-btn');
+            const previousPage = sessionStorage.getItem('previousPage');
+            
+            if (previousPage) {
+                backHomeBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = previousPage;
+                });
+                backHomeBtn.textContent = 'Go Back';
+            }
+        });
+    </script>
+</body>
+</html> 
