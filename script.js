@@ -18,10 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== Dark Mode Toggle with Local Storage =====
   const toggleDark = document.getElementById('toggle-dark');
   if (toggleDark) {
+    // Set initial icon based on stored theme
+    if (localStorage.getItem('theme') === 'dark') {
+      toggleDark.textContent = '☀️';
+    } else {
+      toggleDark.textContent = '🌙';
+    }
+
     toggleDark.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       const mode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
       localStorage.setItem('theme', mode);
+      // Update icon
+      toggleDark.textContent = mode === 'dark' ? '☀️' : '🌙';
     });
   }
 
