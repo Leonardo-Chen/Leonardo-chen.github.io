@@ -45,10 +45,82 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (toggleLang) {
     toggleLang.addEventListener('click', () => {
-      isChinese = !isChinese;
-      toggleLang.innerText = isChinese ? 'EN / 中' : '中 / EN';
-      document.querySelectorAll('.en').forEach(el => el.classList.toggle('hidden', isChinese));
-      document.querySelectorAll('.cn').forEach(el => el.classList.toggle('hidden', !isChinese));
+      // Show work in progress popup
+      const popup = document.createElement('div');
+      popup.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.95);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        color: var(--text-primary, #ffffff);
+        padding: 24px 32px;
+        border-radius: 16px;
+        z-index: 1000;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      `;
+      popup.innerHTML = `
+        <div style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+        ">
+          <div style="
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            animation: float 2s ease-in-out infinite;
+          ">🚧</div>
+          <h3 style="
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          ">Work in Progress</h3>
+          <p style="
+            margin: 0;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+          ">Translation feature coming soon!</p>
+        </div>
+      `;
+      document.body.appendChild(popup);
+
+      // Add floating animation
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Trigger entrance animation
+      requestAnimationFrame(() => {
+        popup.style.opacity = '1';
+        popup.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+
+      // Remove popup after 2.5 seconds with exit animation
+      setTimeout(() => {
+        popup.style.opacity = '0';
+        popup.style.transform = 'translate(-50%, -50%) scale(0.95)';
+        setTimeout(() => {
+          popup.remove();
+          style.remove();
+        }, 300);
+      }, 2500);
     });
   }
 

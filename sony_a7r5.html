@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sony a7r5 | Zheng Chen Portfolio</title>
+  <link rel="icon" type="image/png" href="src/assets/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90vh;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .gallery-item {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+
+    .gallery-item .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    body.dark-mode .gallery-item .caption {
+      background: rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Back to top button styles */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .back-to-top svg {
+      width: 24px;
+      height: 24px;
+      fill: #ffffff;
+    }
+
+    body.dark-mode .back-to-top {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .back-to-top:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="logo">
+      <a href="index.html">
+        <img src="src/assets/logo_portfolio.png" alt="CZ Logo"/>
+      </a>
+    </div>
+
+    <!-- Menu -->
+    <ul class="menu" id="menu">
+      <div class="close-btn" id="close-menu">×</div>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="src/cv_cn.pdf">CV</a></li>
+    </ul>
+
+    <!-- Controls -->
+    <div class="toggle-right-controls">
+      <a href="#" id="toggle-dark">🌙</a>
+      <a href="#" id="toggle-lang">中/EN</a>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </div>
+</nav>
+
+<!-- Project Detail -->
+<section class="project-detail container fade-up" style="padding: 4rem 1rem; max-width: 1200px; margin: auto;">
+  <!-- Project Header -->
+  <div class="project-header">
+    <h1 style="font-size: 2.5rem; font-weight: 700;">Sony a7r5 - 3D Modeling Project</h1>
+    <div class="project-meta" style="margin-top: 1rem; color: var(--text-secondary);">
+      <span>A.A. 2024-2025</span> • 
+      <span>Digitally Designed Objects for Fast Prototyping</span>
+    </div>
+  </div>
+
+  <!-- Project Content -->
+  <div class="project-content" style="margin-top: 3rem;">
+    <div class="project-controls">
+      <a href="projects.html" class="back-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Projects
+      </a>
+      <div class="share-buttons">
+        <button class="share-btn twitter" onclick="shareOnTwitter()">
+          <i class="fab fa-twitter"></i>
+        </button>
+        <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
+          <i class="fab fa-linkedin-in"></i>
+        </button>
+        <button class="share-btn facebook" onclick="shareOnFacebook()">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+        <button class="share-btn wechat" onclick="shareToWeChat()">
+          <i class="fab fa-weixin"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Renders Section -->
+    <div class="section" style="margin-bottom: 4rem;">
+      <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-primary); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">Renders</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div class="gallery-item" onclick="openModal(this)">
+          <div class="project-image-container">
+            <img src="src/resource/sony-a7r5/render1.jpeg" alt="Front-right view">
+          </div>
+          <div class="caption">Front-right view</div>
+        </div>
+        <div class="gallery-item" onclick="openModal(this)">
+          <div class="project-image-container">
+            <img src="src/resource/sony-a7r5/sony_a7r5_render3.jpg" alt="Back-left view">
+          </div>
+          <div class="caption">Back-left view</div>
+        </div>
+        <div class="gallery-item" onclick="openModal(this)">
+          <div class="project-image-container">
+            <img src="src/resource/sony-a7r5/render8.jpg" alt="Detail view">
+          </div>
+          <div class="caption">Detail view</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reference Images Section -->
+    <div class="section" style="margin-bottom: 4rem;">
+      <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-primary); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">Reference Images</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div class="gallery-item" onclick="openModal(this)">
+          <div class="project-image-container">
+            <img src="src/resource/sony-a7r5/front.png" alt="Front reference">
+          </div>
+          <div class="caption">Front reference</div>
+        </div>
+        <div class="gallery-item" onclick="openModal(this)">
+          <div class="project-image-container">
+            <img src="src/resource/sony-a7r5/left.png" alt="Left reference">
+          </div>
+          <div class="caption">Left reference</div>
+        </div>
+        <div class="gallery-item" onclick="openModal(this)">
+          <div class="project-image-container">
+            <img src="src/resource/sony-a7r5/top_with_lens.jpg" alt="Top with lens reference">
+          </div>
+          <div class="caption">Top with lens reference</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sketches Section -->
+    <div class="section" style="margin-bottom: 4rem;">
+      <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-primary); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">Sketches</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div class="gallery-item" onclick="openModal(this)">
+          <div class="project-image-container">
+            <img src="src/resource/sony-a7r5/image.png" alt="Front sketch">
+          </div>
+          <div class="caption">Front sketch</div>
+        </div>
+        <div class="gallery-item" onclick="openModal(this)">
+          <div class="project-image-container">
+            <img src="src/resource/sony-a7r5/image1.png" alt="Top sketch">
+          </div>
+          <div class="caption">Top sketch</div>
+        </div>
+        <div class="gallery-item" onclick="openModal(this)">
+          <div class="project-image-container">
+            <img src="src/resource/sony-a7r5/image2.png" alt="Additional sketch">
+          </div>
+          <div class="caption">Additional sketch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="imageModal" class="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-left">
+    <p>© 2025 Zheng Chen</p>
+    <p>Designing for Intelligent Systems, Interaction & Mobility</p>
+  </div>
+  <div class="footer-right">
+    <p>
+      <a href="mailto:leonardochen00@gmail.com">Email</a> |
+      <a href="https://github.com/yourname">Github</a>
+    </p>
+  </div>
+</footer>
+
+<!-- Back button -->
+<a href="javascript:history.back()" class="back-to-top" title="Go Back">
+  <svg viewBox="0 0 24 24">
+    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+  </svg>
+</a>
+
+<!-- Script -->
+<script src="script.js"></script>
+<script>
+  // Modal functionality
+  function openModal(element) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const img = element.querySelector('img');
+    modal.style.display = "block";
+    modalImg.src = img.src;
+  }
+
+  function closeModal() {
+    document.getElementById('imageModal').style.display = "none";
+  }
+
+  // Close modal when clicking outside the image
+  window.onclick = function(event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  // Share functionality
+  function shareOnTwitter() {
+    const text = "Check out this amazing project!";
+    const url = window.location.href;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+  }
+
+  function shareOnLinkedIn() {
+    const url = window.location.href;
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+  }
+
+  function shareOnFacebook() {
+    const url = window.location.href;
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+  }
+
+  function shareToWeChat() {
+    const url = window.location.href;
+    const title = document.title;
+    const desc = "Check out this amazing project!";
+    
+    // 使用微信的分享接口
+    if (typeof WeixinJSBridge !== 'undefined') {
+      WeixinJSBridge.invoke('shareTimeline', {
+        title: title,
+        link: url,
+        desc: desc,
+        imgUrl: 'src/assets/logo_portfolio.png'
+      });
+    } else {
+      // 如果不是在微信环境中，提示用户
+      alert('请在微信中打开以分享到朋友圈');
+    }
+  }
+</script>
+</body>
+</html>
