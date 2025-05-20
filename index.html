@@ -3,7 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zheng Chen Portfolio</title>
+  <title>Zheng Chen - Interdisciplinary Designer & Researcher | Portfolio</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Zheng Chen, an interdisciplinary designer and researcher specializing in AI, spatial experience, and interactive systems." />
+  <meta name="keywords" content="Zheng Chen, designer, researcher, AI, interactive systems, spatial experience, portfolio" />
+  <meta name="author" content="Zheng Chen" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Zheng Chen - Interdisciplinary Designer & Researcher" />
+  <meta property="og:description" content="Portfolio of Zheng Chen, an interdisciplinary designer and researcher specializing in AI, spatial experience, and interactive systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com" />
+  <meta property="og:image" content="src/assets/logo_portfolio.png" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Zheng Chen - Interdisciplinary Designer & Researcher" />
+  <meta name="twitter:description" content="Portfolio of Zheng Chen, an interdisciplinary designer and researcher specializing in AI, spatial experience, and interactive systems." />
+  <meta name="twitter:image" content="src/assets/logo_portfolio.png" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://yourdomain.com" />
+  
   <link rel="icon" type="image/png" href="src/assets/favicon.png" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -16,8 +38,8 @@
   <div class="nav-container">
     <!-- Logo -->
     <div class="logo">
-      <a href="index.html">
-        <img src="src/assets/logo_portfolio.png" alt="CZ Logo"/>
+      <a href="index.html" aria-label="Home">
+        <img src="src/assets/logo_portfolio.png" alt="Zheng Chen Portfolio Logo"/>
       </a>
     </div>
 
@@ -59,7 +81,7 @@
   </section>
 
   <!-- Projects Section: Title + Content with Background -->
-  <section id="projects-section" class="projects-section">
+  <main id="projects-section" class="projects-section">
 
     <!-- Projects Section Title -->
     <div class="section-header fade-up">
@@ -70,14 +92,14 @@
     </div>
 
     <!-- Projects Grid -->
-    <a href="air_purifier.html" class="project-link">
+    <a href="air_purifier.html" class="project-link" aria-label="View Air Purifier Project">
       <section class="project-block fade-up" data-category="interaction ai">
         <div class="project-info">
           <h2 class="en">Air Purifier</h2>
           <p class="en">A speculative design installation that uses AI to generate travel destinations based on your movement and touch.</p>
         </div>
         <div class="project-img">
-          <img src="src/resource/air_purier.PNG" alt="Project 1" />
+          <img src="src/resource/air_purier.PNG" alt="Air Purifier Project - AI-powered travel destination generator" />
         </div>
       </section>
     </a>
@@ -142,6 +164,8 @@
       </section>
     </a>
 
+  </main>
+
   <!-- Footer -->
   <footer>
     <div class="footer-left">
@@ -150,11 +174,27 @@
     </div>
     <div class="footer-right">
       <p>
-        <a href="mailto:leonardochen00@gmail.com"><i class="fas fa-envelope"></i> Email</a> |
-        <a href="https://github.com/yourname"><i class="fab fa-github"></i> Github</a>
+        <a href="mailto:leonardochen00@gmail.com" aria-label="Send email to Zheng Chen"><i class="fas fa-envelope"></i> Email</a> |
+        <a href="https://github.com/yourname" aria-label="Visit Zheng Chen's GitHub profile"><i class="fab fa-github"></i> Github</a>
       </p>
     </div>
   </footer>
+
+  <!-- Schema.org markup for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Zheng Chen",
+    "url": "https://yourdomain.com",
+    "jobTitle": "Interdisciplinary Designer and Researcher",
+    "description": "An interdisciplinary designer and researcher crafting interactive systems that blend AI, spatial experience, and everything magic.",
+    "email": "leonardochen00@gmail.com",
+    "sameAs": [
+      "https://github.com/yourname"
+    ]
+  }
+  </script>
 
   <!-- JavaScript -->
   <script src="script.js"></script>
