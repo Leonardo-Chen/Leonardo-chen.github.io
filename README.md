@@ -7,12 +7,12 @@
 ## NS Nanotech Air Purifier
 
 ### Final Project Photos
-![Final Project 1](src/resource/Air%20Purifier/IMG_6812.heic)
-![Final Project 2](src/resource/Air%20Purifier/IMG_6813.heic)
-![Final Project 3](src/resource/Air%20Purifier/IMG_6814.heic)
-![Final Project 4](src/resource/Air%20Purifier/IMG_6815.heic)
-![Final Project 5](src/resource/Air%20Purifier/IMG_6819.heic)
-![Final Project 6](src/resource/Air%20Purifier/IMG_6821.heic)
+![Final Project 1](src/resource/Air%20Purifier/IMG_6812.jpg)
+![Final Project 2](src/resource/Air%20Purifier/IMG_6813.jpg)
+![Final Project 3](src/resource/Air%20Purifier/IMG_6814.jpg)
+![Final Project 4](src/resource/Air%20Purifier/IMG_6815.jpg)
+![Final Project 5](src/resource/Air%20Purifier/IMG_6819.jpg)
+![Final Project 6](src/resource/Air%20Purifier/IMG_6821.jpg)
 
 ### Original Object Photos
 ![Original Object 1](src/resource/Air%20Purifier/02cc1686d39378d52e5638816b9b1adf.jpg)
@@ -65,40 +65,40 @@ What we found interesting is the shape that reminds us of the Chinese xiangbao, 
 *Final prototype (bottom)*
 
 #### 3D Printing and Laser-cutting Tests
-![First Construction](src/resource/Air%20Purifier/IMG_6589.heic)
+![First Construction](src/resource/Air%20Purifier/IMG_6589.jpg)
 *First construction on the central part*
 
-![Central Part Prototype](src/resource/Air%20Purifier/IMG_6603.heic)
+![Central Part Prototype](src/resource/Air%20Purifier/IMG_6603.jpg)
 *Prototype of the built central part*
 
 ![3D Print Test 1](src/resource/Air%20Purifier/IMG_4229.jpg)
 ![3D Print Test 2](src/resource/Air%20Purifier/IMG_4230.jpg)
-![3D Print Test 3](src/resource/Air%20Purifier/IMG_6627.heic)
+![3D Print Test 3](src/resource/Air%20Purifier/IMG_6627.jpg)
 *First tests on 3D printing*
 
-![3D Print Test 4](src/resource/Air%20Purifier/IMG_6680.heic)
-![3D Print Test 5](src/resource/Air%20Purifier/IMG_6684.heic)
-![3D Print Test 6](src/resource/Air%20Purifier/IMG_6689.heic)
-![3D Print Test 7](src/resource/Air%20Purifier/IMG_6748.heic)
-![3D Print Test 8](src/resource/Air%20Purifier/IMG_6752.heic)
+![3D Print Test 4](src/resource/Air%20Purifier/IMG_6680.jpg)
+![3D Print Test 5](src/resource/Air%20Purifier/IMG_6684.jpg)
+![3D Print Test 6](src/resource/Air%20Purifier/IMG_6689.jpg)
+![3D Print Test 7](src/resource/Air%20Purifier/IMG_6748.jpg)
+![3D Print Test 8](src/resource/Air%20Purifier/IMG_6752.jpg)
 *More elaborate tests with 3D printing*
 
-![Final Structure 1](src/resource/Air%20Purifier/IMG_6803.heic)
-![Final Structure 2](src/resource/Air%20Purifier/IMG_6801.heic)
-![Final Structure 3](src/resource/Air%20Purifier/IMG_6778.heic)
-![Final Structure 4](src/resource/Air%20Purifier/IMG_6775.heic)
+![Final Structure 1](src/resource/Air%20Purifier/IMG_6803.jpg)
+![Final Structure 2](src/resource/Air%20Purifier/IMG_6801.jpg)
+![Final Structure 3](src/resource/Air%20Purifier/IMG_6778.jpg)
+![Final Structure 4](src/resource/Air%20Purifier/IMG_6775.jpg)
 *Final central structure*
 
-![Bending Test 1](src/resource/Air%20Purifier/IMG_6691.heic)
-![Bending Test 2](src/resource/Air%20Purifier/IMG_6775%201.heic)
+![Bending Test 1](src/resource/Air%20Purifier/IMG_6691.jpg)
+![Bending Test 2](src/resource/Air%20Purifier/IMG_6775%201.jpg)
 *First attempt for bending (failed)*
 
 ![Laser Cut Tests](src/resource/Air%20Purifier/IMG_4275.jpg)
 *Various lasercut tests*
 
-![Final Assembly 1](src/resource/Air%20Purifier/IMG_6795.heic)
-![Final Assembly 2](src/resource/Air%20Purifier/IMG_6796.heic)
-![Final Assembly 3](src/resource/Air%20Purifier/IMG_6797.heic)
+![Final Assembly 1](src/resource/Air%20Purifier/IMG_6795.jpg)
+![Final Assembly 2](src/resource/Air%20Purifier/IMG_6796.jpg)
+![Final Assembly 3](src/resource/Air%20Purifier/IMG_6797.jpg)
 *Final central part + final lasercut part*
 
 ![Magnet Logic 1](src/resource/Air%20Purifier/IMG_4276.jpg)

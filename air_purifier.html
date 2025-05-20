@@ -7,71 +7,71 @@
   <link rel="icon" type="image/png" href="src/assets/favicon.png" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      overflow: auto;
-    }
-
-    .modal-content {
-      margin: auto;
+    .page-body img {
+      max-width: 100%;
+      height: auto;
       display: block;
-      max-width: 90%;
-      max-height: 90vh;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
+      margin: 0 auto;
     }
-
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
+    .column-list img {
+      max-width: 100%;
+      height: auto;
     }
-
+    .image {
+      margin: 1em 0;
+    }
+    .image img {
+      max-width: 100%;
+      height: auto;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px 0;
+    }
     .gallery-item {
-      cursor: pointer;
-      transition: transform 0.3s ease;
       position: relative;
       overflow: hidden;
       border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
     }
-
     .gallery-item:hover {
       transform: scale(1.02);
     }
-
-    .gallery-item .caption {
+    .gallery-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-caption {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-primary);
-      padding: 0.8rem 1rem;
-      font-size: 0.9rem;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 10px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
-
-    body.dark-mode .gallery-item .caption {
-      background: rgba(0, 0, 0, 0.1);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
     }
   </style>
 </head>
@@ -108,47 +108,338 @@
   </div>
 </nav>
 
-<!-- Project Detail -->
-<section class="project-detail container fade-up" style="padding: 4rem 1rem; max-width: 1200px; margin: auto;">
-  <!-- Project Header -->
-  <div class="project-header">
-    <h1 style="font-size: 2.5rem; font-weight: 700;">Air Purifier</h1>
-    <div class="project-meta" style="margin-top: 1rem; color: var(--text-secondary);">
-      <span>A.A. 2024-2025</span> • 
-      <span>Digitally Designed Objects for Fast Prototyping</span>
-      <span style="margin-left:1em;">By Mélanie Turano, Zheng Chen</span>
+<article id="083275f6-3aea-4502-a3b7-8b7612a3e631" class="page sans" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1rem;">
+  <header style="margin-bottom: 3rem;">
+    <h1 class="page-title" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Air Purifier</h1>
+    <p class="page-description"></p>
+    <table class="properties" style="width: 100%; border-collapse: collapse;">
+      <tbody>
+        <tr class="property-row property-row-text">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Author(s)
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">Mélanie Turano, Zheng Chen</td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Academic Year
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-green">A.A. 2024-2025</span>
+          </td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Course
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-purple">Digitally Designed Objects for Fast Prototyping</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </header>
+  <div class="page-body" style="max-width: 100%;">
+
+<!-- Project Content -->
+<div class="project-content">
+  <div class="project-controls">
+    <div class="share-buttons">
+      <button class="share-btn twitter" onclick="shareOnTwitter()">
+        <i class="fab fa-twitter"></i>
+      </button>
+      <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
+        <i class="fab fa-linkedin-in"></i>
+      </button>
+      <button class="share-btn facebook" onclick="shareOnFacebook()">
+        <i class="fab fa-facebook-f"></i>
+      </button>
     </div>
   </div>
 
-  <div class="project-content" style="margin-top: 3rem;">
-    <div class="project-controls">
-      <a href="projects.html" class="back-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Back to Projects
-      </a>
-      <div class="share-buttons">
-        <button class="share-btn twitter" onclick="shareOnTwitter()">
-          <i class="fab fa-twitter"></i>
-        </button>
-        <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
-          <i class="fab fa-linkedin-in"></i>
-        </button>
-        <button class="share-btn facebook" onclick="shareOnFacebook()">
-          <i class="fab fa-facebook-f"></i>
-        </button>
-        <button class="share-btn wechat" onclick="shareToWeChat()">
-          <i class="fab fa-weixin"></i>
-        </button>
+  <!-- Final Project Photos Section -->
+  <div class="section">
+    <h2>Final Project Photos</h2>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6812.jpg" alt="Final Project View 1">
+        <div class="gallery-caption">Final Project View 1</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6813.jpg" alt="Final Project View 2">
+        <div class="gallery-caption">Final Project View 2</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6815.jpg" alt="Final Project View 3">
+        <div class="gallery-caption">Final Project View 3</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6814.jpg" alt="Final Project View 4">
+        <div class="gallery-caption">Final Project View 4</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6819.jpg" alt="Final Project View 5">
+        <div class="gallery-caption">Final Project View 5</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6821.jpg" alt="Final Project View 6">
+        <div class="gallery-caption">Final Project View 6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Original Object Photos Section -->
+  <div class="section">
+    <h2>Original Object Photos</h2>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/02cc1686d39378d52e5638816b9b1adf.jpg" alt="Original Object 1">
+        <div class="gallery-caption">Original Object View 1</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/22012c51bb5877fb570d9eb025d2c7f7.jpg" alt="Original Object 2">
+        <div class="gallery-caption">Original Object View 2</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/2facf8abdcecb64740ff54d4e9651307.jpg" alt="Original Object 3">
+        <div class="gallery-caption">Original Object View 3</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/3955a404dcb7b0efdd6776e107d7dae0.jpg" alt="Original Object 4">
+        <div class="gallery-caption">Original Object View 4</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/b0e475758386c5d51d856424f446c745.jpg" alt="Original Object 5">
+        <div class="gallery-caption">Original Object View 5</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/acf29769ed197d6041fb0e43a55a52e1.jpg" alt="Original Object 6">
+        <div class="gallery-caption">Original Object View 6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Description Section -->
+  <div class="section">
+    <h2>Description</h2>
+    <p>The object we chose is an air purifier designed by NS Nanotech and a startup with patented technology developed at the University of Michigan and McGill University. NS Nanotech is a company who used to produce nano-LED but when the pandemic decided to work with nitride semiconductors could help fight the virus. The collaboration between the two generated an innovative product: an air purifier designed to neutralize coronavirus in the user's personal airspace, that is about the size of a coffee mug. The object is designed for personal and business use in the home, office, schools, airplanes, ride-shares, and virtually anywhere else you can plug it in.</p>
+    <p>What we found interesting is the shape that reminds us of the Chinese xiangbao, a pocket that holds spices scenting the environment. We thought that is cool that Just as xiangbao allows you to scent the air and make it more pleasant, the air purifier also allows you to rid the air of the virus to make it safe for health.</p>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/image.png" alt="Chinese Xiangbao">
+        <div class="gallery-caption">Various Chinese Xiangbao</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prototyping Section -->
+  <div class="section">
+    <h2>Prototyping</h2>
+    <h3>Initial Sketches</h3>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4218.jpg" alt="Initial Sketch">
+        <div class="gallery-caption">First sketch to understand components and measurements</div>
       </div>
     </div>
 
-    <!-- Project Content -->
-    <!-- Add your project content here -->
-     
+    <h3>Cardboard Prototypes</h3>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4211.jpg" alt="Cardboard Prototype Back">
+        <div class="gallery-caption">Very first cardboard prototype (back)</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4212.jpg" alt="Cardboard Prototype Side">
+        <div class="gallery-caption">Very first cardboard prototype (side)</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4213.jpg" alt="Cardboard Prototype Front">
+        <div class="gallery-caption">Very first cardboard prototype (front)</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4214.jpg" alt="Cardboard Prototype Side with Button">
+        <div class="gallery-caption">Very first cardboard prototype (side with button)</div>
+      </div>
+    </div>
+
+    <h3>3D Printing Tests</h3>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4229.jpg" alt="3D Printing Test 1">
+        <div class="gallery-caption">3D Printing Test 1</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4230.jpg" alt="3D Printing Test 2">
+        <div class="gallery-caption">3D Printing Test 2</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6627.jpg" alt="3D Printing Test 3">
+        <div class="gallery-caption">First tests on 3D printing</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6680.jpg" alt="3D Printing Test 4">
+        <div class="gallery-caption">More elaborate tests with 3D printing</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6684.jpg" alt="3D Printing Test 5">
+        <div class="gallery-caption">3D Printing Test 5</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6689.jpg" alt="3D Printing Test 6">
+        <div class="gallery-caption">3D Printing Test 6</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6748.jpg" alt="3D Printing Test 7">
+        <div class="gallery-caption">3D Printing Test 7</div>
+      </div>
+    </div>
+
+    <h3>Laser Cutting Tests</h3>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4275.jpg" alt="Laser Cutting Test">
+        <div class="gallery-caption">Various lasercut tests</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6795.jpg" alt="Laser Cutting Result 1">
+        <div class="gallery-caption">Laser Cutting Result 1</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6796.jpg" alt="Laser Cutting Result 2">
+        <div class="gallery-caption">Laser Cutting Result 2</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_6797.jpg" alt="Laser Cutting Result 3">
+        <div class="gallery-caption">Laser Cutting Result 3</div>
+      </div>
+    </div>
+
+    <h3>Final Assembly</h3>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4215.jpg" alt="Final Assembly 1">
+        <div class="gallery-caption">Creating the final prototype</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4217.jpg" alt="Final Assembly 2">
+        <div class="gallery-caption">Final Assembly 2</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4219.jpg" alt="Final Assembly 3">
+        <div class="gallery-caption">Final prototype (front)</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4220.jpg" alt="Final Assembly 4">
+        <div class="gallery-caption">Final prototype (side)</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4221.jpg" alt="Final Assembly 5">
+        <div class="gallery-caption">Final prototype (top)</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/IMG_4222.jpg" alt="Final Assembly 6">
+        <div class="gallery-caption">Final prototype (bottom)</div>
+      </div>
+    </div>
   </div>
-</section>
+
+  <!-- Renders Section -->
+  <div class="section">
+    <h2>Renders</h2>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/render_structure.png" alt="Structure Render">
+        <div class="gallery-caption">Structure Render</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/render_structure1.png" alt="Structure Render 2">
+        <div class="gallery-caption">Structure Render 2</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/render_bamboo.png" alt="Wood Components Render">
+        <div class="gallery-caption">Render with Wood Components</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/render_transparent.png" alt="Transparent Components Render">
+        <div class="gallery-caption">Render with Transparent Components</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/render_trasparent.jpg" alt="Transparent Components Render 2">
+        <div class="gallery-caption">Render with Transparent Components 2</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/render_banding.jpeg" alt="Banding Detail">
+        <div class="gallery-caption">Banding Detail</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/render_section.jpg" alt="Section View">
+        <div class="gallery-caption">Section View</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Technical Drawings Section -->
+  <div class="section">
+    <h2>Technical Drawings</h2>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/1.png" alt="Technical Drawing 1">
+        <div class="gallery-caption">Main Dimensions</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/2.png" alt="Technical Drawing 2">
+        <div class="gallery-caption">Section View</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/3.png" alt="Technical Drawing 3">
+        <div class="gallery-caption">Detailed View</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process Documentation Section -->
+  <div class="section">
+    <h2>Process Documentation</h2>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/image 1.png" alt="Process 1">
+        <div class="gallery-caption">Shape of the section for wood insertion</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/image 2.png" alt="Process 2">
+        <div class="gallery-caption">Banding part on the corner</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/image 3.png" alt="Process 3">
+        <div class="gallery-caption">Unfolding part creation</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/image 4.png" alt="Process 4">
+        <div class="gallery-caption">Resizeable feature demonstration</div>
+      </div>
+      <div class="gallery-item" onclick="openModal(this)">
+        <img src="src/projects/air_purifier/image 5.png" alt="Process 5">
+        <div class="gallery-caption">Resizeable feature in action</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resources Section -->
+  <div class="section">
+    <h2>Resources</h2>
+    <p><a href="https://en.puxiang.com/galleries/1add00d7d1ffd2266a923ea0f3b4b2c6" target="_blank">Chinese Xiangbao Reference</a></p>
+    <p><a href="https://www.nsnanotech.com/" target="_blank">NS Nanotech Website</a></p>
+    <p><a href="https://www.behance.net/gallery/107108657/NS-Nanotech-Air-Purifier" target="_blank">Behance Project</a></p>
+  </div>
+</div>
+
+<span class="sans" style="font-size:14px;padding-top:2em"></span>
+
+<div id="imageModal" class="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
 
 <!-- Footer -->
 <footer>
@@ -164,50 +455,65 @@
   </div>
 </footer>
 
-<!-- Back button -->
-<a href="javascript:history.back()" class="back-to-top" title="Go Back">
+<!-- Back to top button -->
+<a href="javascript:history.back()" class="back-to-top back-button" title="Go Back">
   <svg viewBox="0 0 24 24">
     <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
   </svg>
 </a>
 
-<!-- Script -->
 <script src="script.js"></script>
 <script>
+  // Modal functionality
+  function openModal(element) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const img = element.querySelector('img');
+    const backButton = document.querySelector('.back-button');
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    backButton.style.display = "none";
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    const backButton = document.querySelector('.back-button');
+    modal.style.display = "none";
+    backButton.style.display = "flex";
+  }
+
+  // Close modal when clicking outside the image
+  window.onclick = function(event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+
+  }
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  // Share functionality
   function shareOnTwitter() {
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent('Check out this amazing project!');
-    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+    const text = "Check out this amazing project!";
+    const url = window.location.href;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
   }
 
   function shareOnLinkedIn() {
-    const url = encodeURIComponent(window.location.href);
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+    const url = window.location.href;
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
   }
 
   function shareOnFacebook() {
-    const url = encodeURIComponent(window.location.href);
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-  }
-
-  function shareToWeChat() {
     const url = window.location.href;
-    const title = document.title;
-    const desc = "Check out this amazing project!";
-    
-    // 使用微信的分享接口
-    if (typeof WeixinJSBridge !== 'undefined') {
-      WeixinJSBridge.invoke('shareTimeline', {
-        title: title,
-        link: url,
-        desc: desc,
-        imgUrl: 'src/assets/logo_portfolio.png'
-      });
-    } else {
-      // 如果不是在微信环境中，提示用户
-      alert('请在微信中打开以分享到朋友圈');
-    }
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
   }
 </script>
 </body>
-</html> 
+</html>

@@ -550,7 +550,7 @@ body.dark-mode .section-subtitle {
 }
 
 .about-section .section-title {
-  font-size: 2rem;
+  font-size: 2.8rem;
   font-weight: 700;
   text-align: center;
   margin-bottom: 40px;
@@ -1327,7 +1327,7 @@ body.dark-mode .toggle-right-controls a.active {
 
 /* ===== Contact Section ===== */
 .contact-section {
-  padding: 6rem 2rem;
+  padding: 1rem 2rem;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -1490,7 +1490,7 @@ body.dark-mode .card-footer p {
 /* Mobile styles */
 @media (max-width: 768px) {
   .contact-section {
-    padding: 4rem 1rem;
+    padding: 1rem 1rem;
   }
   
   .card-header {
@@ -1632,7 +1632,6 @@ body.dark-mode .filter-btn.active {
 .projects-section .section-title {
   font-size: 4.5rem;
   font-weight: 700;
-  margin-bottom: 1.2rem;
   background: linear-gradient(90deg, #1844e3, #4d7cff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -2348,5 +2347,116 @@ body.dark-mode .project-image-container {
 
 body.dark-mode .back-btn svg {
   stroke: #ffffff;
+}
+
+/* ===== Modal and Gallery Styles ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: auto;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90vh;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.gallery-item {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.gallery-item .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+}
+
+body.dark-mode .gallery-item .caption {
+  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Back to top button styles */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+  fill: #333333;
+}
+
+body.dark-mode .back-to-top {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .back-to-top:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .back-to-top svg {
+  fill: #ffffff;
 }
 
