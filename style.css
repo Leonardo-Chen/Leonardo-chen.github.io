@@ -10,8 +10,8 @@ body {
 }
 
 body.dark-mode {
-  background: linear-gradient(135deg, #1a1a2e, #16213e);
-  color: #e0e0e0;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #e2e8f0;
 }
 
 h1, h2 {
@@ -19,8 +19,13 @@ h1, h2 {
 }
 
 main {
-  background-color: #8d8d8d;
+  background-color: transparent;
   padding-top: 10vh;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode main {
+  background-color: transparent;
 }
 
 /* ===== Logo ===== */
@@ -514,6 +519,25 @@ body.dark-mode .section-subtitle {
   padding: 4em 6vw;
   align-items: center;
   gap: 2em;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .project-block {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .project-block:hover {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 .project-info {
@@ -522,6 +546,15 @@ body.dark-mode .section-subtitle {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+body.dark-mode .project-info h2 {
+  color: #f8fafc;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .project-info p {
+  color: #cbd5e1;
 }
 
 .project-img {
@@ -534,6 +567,17 @@ body.dark-mode .section-subtitle {
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .project-img {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .project-img:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .project-img img {
@@ -541,6 +585,14 @@ body.dark-mode .section-subtitle {
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+}
+
+body.dark-mode .project-img img {
+  filter: brightness(0.9);
+}
+
+body.dark-mode .project-img:hover img {
+  filter: brightness(1);
 }
 
 .about-section {
