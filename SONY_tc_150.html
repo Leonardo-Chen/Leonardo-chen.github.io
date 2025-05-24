@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sony TC-150 | Zheng Chen Portfolio</title>
+  <link rel="icon" type="image/png" href="src/assets/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <script src="https://unpkg.com/heic2any"></script>
+  <style>
+    .page-body img {
+      max-width: 100%;
+      height: auto;
+	display: block;
+      margin: 0 auto;
+    }
+    .column-list img {
+	max-width: 100%;
+      height: auto;
+    }
+    .image {
+      margin: 1em 0;
+    }
+    .image img {
+      max-width: 100%;
+      height: auto;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 15px 0;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      aspect-ratio: 4/3;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+	display: block;
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 8px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    }
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (min-width: 1200px) {
+      .video-container {
+        max-width: 1200px;
+      }
+    }
+    @media (max-width: 768px) {
+      .video-container {
+        max-width: 100%;
+      }
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .section h2 {
+	margin-bottom: 1rem;
+}
+    .section h3 {
+      margin: 1.5rem 0 1rem;
+    }
+    .section h4 {
+      margin: 1.25rem 0 0.75rem;
+    }
+    .section p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .section ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+    .section li {
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+      }
+      .gallery-item {
+        aspect-ratio: 3/2;
+      }
+    }
+  </style>
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+	width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90vh;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .modal-caption {
+      margin: auto;
+	display: block;
+      width: 80%;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 150px;
+    }
+  </style>
+  <style>
+    /* Base styles */
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: #1d4ed8;
+    }
+
+    /* Underline effect on hover */
+    a:not(.share-btn):not(.menu a):not(.toggle-right-controls a)::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #2563eb;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+
+    a:not(.share-btn):not(.menu a):not(.toggle-right-controls a):hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    /* Resource links styling */
+    .resource-link {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #f3f4f6;
+      border-radius: 6px;
+      margin: 4px 0;
+      border: 1px solid #e5e7eb;
+    }
+
+    .resource-link:hover {
+      background-color: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    /* References list styling */
+    .references-list a {
+      display: inline-block;
+      padding: 4px 0;
+    }
+
+    /* Footer links styling */
+    footer a {
+      color: #4b5563;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #1f2937;
+    }
+
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      a {
+        color: #60a5fa;
+      }
+
+      a:hover {
+        color: #93c5fd;
+      }
+
+      a:not(.share-btn):not(.menu a):not(.toggle-right-controls a)::after {
+        background-color: #60a5fa;
+      }
+
+      .resource-link {
+        background-color: #1f2937;
+        border-color: #374151;
+      }
+
+      .resource-link:hover {
+        background-color: #374151;
+      }
+
+      footer a {
+        color: #9ca3af;
+      }
+
+      footer a:hover {
+        color: #d1d5db;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Modal for full image view -->
+<div id="imageModal" class="modal">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modalImage">
+  <div id="modalCaption" class="modal-caption"></div>
+</div>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="logo">
+      <a href="index.html">
+        <img src="src/assets/logo_portfolio.png" alt="CZ Logo"/>
+      </a>
+    </div>
+
+    <!-- Menu -->
+    <ul class="menu" id="menu">
+      <div class="close-btn" id="close-menu">×</div>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="src/cv_cn.pdf">CV</a></li>
+    </ul>
+
+    <!-- Controls -->
+    <div class="toggle-right-controls">
+      <a href="#" id="toggle-dark">🌙</a>
+      <a href="#" id="toggle-lang">中/EN</a>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </div>
+</nav>
+
+<article id="8f666395-2d3e-45da-a673-98a5a2d243fc" class="page sans" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1rem;">
+  <header style="margin-bottom: 3rem;">
+    <h1 class="page-title" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">SONY TC-150</h1>
+    <p class="page-description"></p>
+    <table class="properties" style="width: 100%; border-collapse: collapse;">
+      <tbody>
+        <tr class="property-row property-row-text">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">Student(s)</th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);"><a href="https://luferra.github.io/portfolio/" target="_blank">Luca Ferrari</a>, Zheng Chen</td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">Academic Year</th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-green">A.A. 2024-2025</span>
+          </td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">Course</th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-purple">Digitally Designed Objects for Fast Prototyping</span>
+          </td>
+        </tr>
+        <tr class="property-row property-row-date">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">Delivery Date</th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);"><time>@2023年12月18日</time></td>
+        </tr>
+        <tr class="property-row property-row-multi_select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">Output type</th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-pink">Physical</span>
+          </td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">License</th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-gray">CC BY-NC-SA</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </header>
+
+  <div class="page-body" style="max-width: 100%;">
+    <!-- Project Content -->
+    <div class="project-content">
+      <div class="project-controls">
+        <div class="share-buttons">
+          <button class="share-btn twitter" onclick="shareOnTwitter()">
+            <i class="fab fa-twitter"></i>
+          </button>
+          <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
+            <i class="fab fa-linkedin-in"></i>
+          </button>
+          <button class="share-btn facebook" onclick="shareOnFacebook()">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+        </div>
+      </div>
+
+      <!--  Header Section -->
+      <div class="section">
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/Screenshot_2024-12-25_alle_10.05.05.png" alt="Final Result">
+            <div class="gallery-caption">Final result</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Abstract Section -->
+      <div class="section">
+        <h2>Abstract</h2>
+        <p>The Sony TC-150 is a classic portable reel-to-reel tape recorder, launched in the 1970s. It was highly regarded for its compact and sturdy design as well as its versatile functionality. It supports 3-inch tape reels, features mono recording, and includes a built-in speaker and microphone, with the option to connect an external microphone. It also offers two recording speed settings and can be powered by both batteries and an AC adapter. Ideal for interviews, field recordings, and home use, the TC-150 stands as a significant milestone in the history of Sony's portable recording devices.</p>
+      </div>
+
+      <!-- Video Section -->
+      <div class="section">
+        <h2>Video</h2>
+        <div class="video-container">
+          <video controls>
+            <source src="src/projects/SONY_tc_150/Sonytc150.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <!-- Selected Images Section -->
+      <div class="section">
+        <h2>Selected Images</h2>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/DSC_6389.jpg" alt="Sony TC-150 View 1">
+            <div class="gallery-caption">Sony TC-150 View 1</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/DSC_6406.jpg" alt="Sony TC-150 View 2">
+            <div class="gallery-caption">Sony TC-150 View 2</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/DSC_6410.jpg" alt="Sony TC-150 View 3">
+            <div class="gallery-caption">Sony TC-150 View 3</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/DSC_6416.jpg" alt="Sony TC-150 View 4">
+            <div class="gallery-caption">Sony TC-150 View 4</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/DSC_6428.jpg" alt="Sony TC-150 View 5">
+            <div class="gallery-caption">Sony TC-150 View 5</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/DSC_6424.jpg" alt="Sony TC-150 View 6">
+            <div class="gallery-caption">Sony TC-150 View 6</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/DSC_6440.jpg" alt="Sony TC-150 View 7">
+            <div class="gallery-caption">Sony TC-150 View 7</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/DSC_6453.jpg" alt="Sony TC-150 View 8">
+            <div class="gallery-caption">Sony TC-150 View 8</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept Section -->
+      <div class="section">
+        <h2>Concept</h2>
+        <p>For this project, we blended vintage design with a modern sensibility, combining the aesthetics of a classic tape recorder with new technology. The exterior is made of natural wood and metal, combining minimalist lines and soft tones for a unique sense of craftsmanship. The front layout is intuitive and functional, including integrated speakers, operating buttons and knobs that allow users to play, record and maneuver with ease. The black tape compartment cover design gives the product an added sense of detail, and the vintage buttons and toggles further emphasize the joy of manual operation. This device is not only a tribute to the classic tape player, but also a piece of art and a practical tool in modern homes and creative spaces, suitable for music appreciation, recording creation and decorative furnishings to meet the multiple needs of vintage enthusiasts and design seekers.</p>
+      </div>
+
+      <!-- User Journey Section -->
+      <div class="section">
+        <h2>User Journey</h2>
+        <p>First, you can open the lid of the tape and put in your favorite tape and close the lid. The tape part doesn't serve any real purpose, it just optimizes the aesthetics and adds a vintage effect. Turn on the power switch and you will hear a power on tone. Then you can play the song.</p>
+        <p>Users can experience the following features:</p>
+        <ul>
+          <li><strong>Replacement of music tapes</strong></li>
+          <li><strong>Switch Play mode</strong></li>
+          <li><strong>Switch On / Off</strong></li>
+          <li><strong>Backward 10 seconds</strong></li>
+          <li><strong>Forward 10 seconds</strong></li>
+          <li><strong>Previous song</strong></li>
+          <li><strong>Next song</strong></li>
+          <li><strong>Play / Pause</strong></li>
+          <li><strong>Volume control</strong></li>
+        </ul>
+      </div>
+
+      <!-- Prototyping Section -->
+      <div class="section">
+        <h2>Prototyping Phase</h2>
+        <p>At the beginning of the project, we took a close look at the original products, and we were ready to keep the dimensions of the original items as much as possible and restore the corresponding functions. At the same time, we wanted to realize the function of the original design that you can open the lid to change the tape to increase the interaction with the user, so that the product we drew the top view according to the real size, which was used to simplify the subsequent construction.</p>
+
+        <h3>Paper Sketching</h3>
+        <p>Beginning with paper sketches was vital in identifying potential solutions, leading to key decisions like sacrificing the original object's ergonomics. This approach allowed for the relocation of two buttons to the opposite side, effectively saving space in thickness.</p>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/IMG_6974.heic" alt="Initial Paper Sketch">
+            <div class="gallery-caption">Initial Paper Sketch</div>
+          </div>
+        </div>
+
+        <h3>Component Paper Sketching</h3>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/IMG_7563.heic" alt="Component Sketch 1">
+            <div class="gallery-caption">Component Sketch 1</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/IMG_7564.heic" alt="Component Sketch 2">
+            <div class="gallery-caption">Component Sketch 2</div>
+          </div>
+        </div>
+
+        <h3>Cardboard Prototype</h3>
+        <p>At the outset of the design, we decided to use multiple layers of laser cut wood panels stacked to form our main structure. This made it easier for us to subsequently insert and install the individual components. It also allowed us to cut each layer of wood more easily to reserve space for parts to be mounted.</p>
+        <p>We determined where and how to place the major components based on sketches during cardboard prototyping.</p>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/DSC_6453.jpg" alt="Cardboard Prototype 1">
+            <div class="gallery-caption">Cardboard Prototype 1</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/DSC_6440.jpg" alt="Cardboard Prototype 2">
+            <div class="gallery-caption">Cardboard Prototype 2</div>
+          </div>
+        </div>
+
+        <h3>First Fusion Prototype</h3>
+        <p>We created our fusion file from a sketch drawn on paper. We avoided adding details as early in the design as possible, and we reserved only the space necessary for the main functions.</p>
+        <p>We used a multi-layer structure, designed the components individually, and finally considered adjusting them to the assembly.</p>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/base.png" alt="Base Design">
+            <div class="gallery-caption">Base Design</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/layers.png" alt="Layer Design">
+            <div class="gallery-caption">Layer Design</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/section_middle.png" alt="Middle Section">
+            <div class="gallery-caption">Middle Section</div>
+          </div>
+        </div>
+
+        <h3>Designed Solutions</h3>
+        <h4>Lever</h4>
+        <p>This button allows the user to easily remove the music tape, and it has a warping-like lever attached to its underside; we used a spring to reset the lever mechanism.</p>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/leva1.jpg" alt="Lever Design">
+            <div class="gallery-caption">Lever Design</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/leva2.png" alt="Lever Design 2">
+            <div class="gallery-caption">Lever Design 2</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/leva4.png" alt="Lever Design 3">
+            <div class="gallery-caption">Lever Design 3</div>
+          </div>
+        </div>
+
+        <h4>Lever Design Problems and Solutions</h4>
+        <p>During the development of the lever mechanism, we encountered several challenges that required innovative solutions.</p>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/leva_problems.png" alt="Lever Problems">
+            <div class="gallery-caption">Lever Design Problems</div>
+          </div>
+        </div>
+        <ol>
+          <li>When the button is rotated, or not placed in the correct position again, it will not be pressed and the whole mechanism will not work.</li>
+          <li>There is not enough room for the warping board to move and the music tape cannot be fully lifted.</li>
+          <li>No consideration was given to how the spring is held in place, and there is a good chance that the spring will fall out when it springs up.</li>
+        </ol>
+
+        <h4>Final Lever Solution</h4>
+        <p>We added a hinge between button and lever, and also added lever supports to allow more room for movement. Finally, we will add hot melt adhesive to secure the spring.</p>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/leva5.png" alt="Lever Solution 1">
+            <div class="gallery-caption">Lever Solution 1</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/leva6.png" alt="Lever Solution 2">
+            <div class="gallery-caption">Lever Solution 2</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/leva7.png" alt="Lever Solution 3">
+            <div class="gallery-caption">Lever Solution 3</div>
+          </div>
+        </div>
+
+        <h4>Volume Switch Holder</h4>
+        <p>Since we had a volume adjustment knob on our piece, but we only had buttons and not a specific knob. We had to design this structure to convert the two buttons into a knob control.</p>
+        <p>We have cleverly designed this structure, which allows us to align the two buttons in parallel, maintaining the look of the original product knobs.</p>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/vlume.png" alt="Volume Switch 1">
+            <div class="gallery-caption">Volume Switch 1</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/volume.png" alt="Volume Switch 2">
+            <div class="gallery-caption">Volume Switch 2</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/volume_section.png" alt="Volume Switch Section">
+            <div class="gallery-caption">Volume Switch Section</div>
+          </div>
+        </div>
+
+        <h4>Laser Cut Layers</h4>
+        <p>By accurately digging holes in each layer of wood, we reduce the use of screws and hold the pieces more securely.</p>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/insert.png" alt="Laser Cut Insert">
+            <div class="gallery-caption">Laser Cut Insert</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/holes.png" alt="Laser Cut Holes">
+            <div class="gallery-caption">Laser Cut Holes</div>
+          </div>
+        </div>
+
+        <h4>Additional Views</h4>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/front_right.png" alt="Front Right View">
+            <div class="gallery-caption">Front Right View</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/section.png" alt="Section View">
+            <div class="gallery-caption">Section View</div>
+          </div>
+        </div>
+
+        <h4>Closing Magnets System</h4>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/magnetic.png" alt="Magnetic Components">
+            <div class="gallery-caption">Magnetic Components</div>
+          </div>
+        </div>
+
+        <h3>Technical Specifications</h3>
+        <div class="section">
+          <h4>Dimensions</h4>
+          <ul>
+            <li>Width: 240mm</li>
+            <li>Height: 180mm</li>
+            <li>Depth: 80mm</li>
+          </ul>
+
+          <h4>Materials</h4>
+          <ul>
+            <li>Wood: Natural oak for the main body</li>
+            <li>Metal: Aluminum for structural components</li>
+            <li>Plastic: ABS for buttons and controls</li>
+            <li>Electronics: Custom PCB with Arduino Nano</li>
+          </ul>
+
+          <h4>Assembly Instructions</h4>
+          <ol>
+            <li>Start with the base layer and secure it to the main body</li>
+            <li>Install the magnetic components and tape mechanism</li>
+            <li>Mount the lever system and volume control</li>
+            <li>Attach the front panel with buttons and controls</li>
+            <li>Connect the electronics and test all functions</li>
+          </ol>
+
+          <h4>Troubleshooting Guide</h4>
+          <ul>
+            <li><strong>Lever not returning:</strong> Check spring tension and alignment</li>
+            <li><strong>Volume control issues:</strong> Verify button connections and potentiometer</li>
+            <li><strong>Tape mechanism problems:</strong> Inspect magnetic components and alignment</li>
+            <li><strong>Power issues:</strong> Check battery connections and power supply</li>
+          </ul>
+        </div>
+
+        <h3>Final Fusion Prototype</h3>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/fusion_final.png" alt="Final Fusion 1">
+            <div class="gallery-caption">Final Fusion 1</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/fusion_final_front.png" alt="Final Fusion Front">
+            <div class="gallery-caption">Final Fusion Front</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/fusion_final2.png" alt="Final Fusion 2">
+            <div class="gallery-caption">Final Fusion 2</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/final.png" alt="Final Design">
+            <div class="gallery-caption">Final Design</div>
+          </div>
+        </div>
+
+        <h3>Renderings</h3>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/render2.png" alt="Rendering 1">
+            <div class="gallery-caption">Rendering 1</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/render1.png" alt="Rendering 2">
+            <div class="gallery-caption">Rendering 2</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/assemble_2024-Dec-17_06-05-14PM-000_CustomizedView5167670604.png" alt="Rendering 3">
+            <div class="gallery-caption">Rendering 3</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/SONY_tc_150/render5.png" alt="Rendering 4">
+            <div class="gallery-caption">Rendering 4</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources Section -->
+      <div class="section">
+        <h2>Resources</h2>
+        <div class="resources-list">
+          <div class="resource-item">
+            <h3>Technical Drawings</h3>
+            <a href="src/projects/SONY_tc_150/tc150_drawings.pdf" class="resource-link">tc150_drawings.pdf</a>
+          </div>
+          <div class="resource-item">
+            <h3>3D Files</h3>
+            <a href="src/projects/SONY_tc_150/Sony_tc150.f3z" class="resource-link">Sony_tc150.f3z</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- References Section -->
+      <div class="section">
+        <h2>References</h2>
+        <ul class="references-list">
+          <li>
+            <a href="https://www.steampoweredradio.com/pdf/sony/manuals/Sony%20TC-150%20Cassette%20Recorder%20Instruction%20Manual.pdf">
+              Sony TC-150 Cassette Recorder Instruction Manual
+            </a>
+          </li>
+          <li>
+            <a href="https://blenderartists.org/t/sony-tc-150-cassette-player/1417774">
+              Home of the blender community
+            </a>
+          </li>
+          <li>
+            <a href="https://walkmancentral.com/products/tc-150">
+              Walkman central
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Project Timeline Section -->
+      <div class="section">
+        <h2>Project Timeline</h2>
+        <div class="section">
+          <h4>Phase 1: Research and Planning (Week 1-2)</h4>
+          <ul>
+            <li>Study of original Sony TC-150 design</li>
+            <li>Material selection and sourcing</li>
+            <li>Initial sketches and measurements</li>
+          </ul>
+
+          <h4>Phase 2: Prototyping (Week 3-4)</h4>
+          <ul>
+            <li>Cardboard prototype construction</li>
+            <li>Testing of mechanical components</li>
+            <li>Initial electronics integration</li>
+          </ul>
+
+          <h4>Phase 3: Development (Week 5-6)</h4>
+          <ul>
+            <li>CAD modeling and refinement</li>
+            <li>Laser cutting and assembly</li>
+            <li>Component testing and adjustment</li>
+          </ul>
+
+          <h4>Phase 4: Final Assembly (Week 7-8)</h4>
+          <ul>
+            <li>Final assembly and testing</li>
+            <li>Quality control and adjustments</li>
+            <li>Documentation and presentation preparation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Future Improvements Section -->
+      <div class="section">
+        <h2>Future Improvements</h2>
+        <div class="section">
+          <h4>Technical Improvements</h4>
+          <ul>
+            <li>Implement a more robust power management system</li>
+            <li>Add Bluetooth connectivity for modern audio streaming</li>
+            <li>Improve the tape mechanism's durability</li>
+            <li>Enhance the speaker system quality</li>
+          </ul>
+
+          <h4>Design Improvements</h4>
+          <ul>
+            <li>Refine the lever mechanism for smoother operation</li>
+            <li>Add more customization options for the exterior finish</li>
+            <li>Implement a modular design for easier maintenance</li>
+            <li>Create additional accessory options</li>
+          </ul>
+
+          <h4>User Experience Improvements</h4>
+          <ul>
+            <li>Add LED indicators for better status feedback</li>
+            <li>Implement a digital display for track information</li>
+            <li>Create a companion app for enhanced control</li>
+            <li>Add recording quality presets</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<script src="script.js"></script>
+<script>
+  // Get the modal
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+  const captionText = document.getElementById("modalCaption");
+  const closeBtn = document.getElementsByClassName("modal-close")[0];
+
+  // Function to convert HEIC to JPEG
+  async function convertHeicToJpeg(heicUrl) {
+    try {
+      const response = await fetch(heicUrl);
+      const blob = await response.blob();
+      const jpegBlob = await heic2any({
+        blob: blob,
+        toType: "image/jpeg",
+        quality: 0.8
+      });
+      return URL.createObjectURL(jpegBlob);
+    } catch (error) {
+      console.error('Error converting HEIC to JPEG:', error);
+      return heicUrl; // Fallback to original URL if conversion fails
+    }
+  }
+
+  // Function to handle image loading
+  async function loadImage(imgElement) {
+    const src = imgElement.getAttribute('src');
+    if (src.toLowerCase().endsWith('.heic')) {
+      try {
+        const jpegUrl = await convertHeicToJpeg(src);
+        imgElement.src = jpegUrl;
+      } catch (error) {
+        console.error('Error loading HEIC image:', error);
+      }
+    }
+  }
+
+  // Convert all HEIC images on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img[src$=".heic"]');
+    images.forEach(loadImage);
+  });
+
+  // Function to open modal
+  async function openModal(element) {
+    const img = element.querySelector('img');
+    const caption = element.querySelector('.gallery-caption');
+    
+    // Convert HEIC if needed before showing in modal
+    if (img.src.toLowerCase().endsWith('.heic')) {
+      try {
+        const jpegUrl = await convertHeicToJpeg(img.src);
+        modalImg.src = jpegUrl;
+      } catch (error) {
+        console.error('Error converting HEIC for modal:', error);
+        modalImg.src = img.src;
+      }
+    } else {
+      modalImg.src = img.src;
+    }
+    
+    modal.style.display = "block";
+    captionText.innerHTML = caption.innerHTML;
+  }
+
+  // Close modal when clicking the close button
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // Close modal when clicking outside the image
+  modal.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  // Close modal with escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      modal.style.display = "none";
+    }
+  });
+</script>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-left">
+    <p>© 2025 Zheng Chen</p>
+    <p>Designing for Intelligent Systems, Interaction & Mobility</p>
+  </div>
+  <div class="footer-right">
+    <p>
+      <a href="mailto:leonardochen00@gmail.com">Email</a> |
+      <a href="https://github.com/yourname">Github</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
