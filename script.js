@@ -171,6 +171,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Cookie Consent
+  const cookieConsent = document.getElementById('cookie-consent');
+  const acceptCookies = document.getElementById('accept-cookies');
+  
+  // Check if user has already accepted cookies
+  if (!localStorage.getItem('cookiesAccepted')) {
+    cookieConsent.style.display = 'flex';
+  }
+  
+  // Handle cookie acceptance
+  acceptCookies.addEventListener('click', function() {
+    localStorage.setItem('cookiesAccepted', 'true');
+    cookieConsent.style.display = 'none';
+  });
 });
 
 // ===== Filter Functionality =====
