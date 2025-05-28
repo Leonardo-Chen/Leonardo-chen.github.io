@@ -437,17 +437,21 @@ body.dark-mode #menu.show {
   height: 100%;
   background-size: cover;
   background-position: center;
-  animation: fade 18s infinite;
+  animation: fade 30s infinite;
   opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
+
 .bg-slide:nth-child(1) { animation-delay: 0s; }
 .bg-slide:nth-child(2) { animation-delay: 6s; }
 .bg-slide:nth-child(3) { animation-delay: 12s; }
+.bg-slide:nth-child(4) { animation-delay: 18s; }
+.bg-slide:nth-child(5) { animation-delay: 24s; }
 
 @keyframes fade {
   0%, 100% { opacity: 0; }
-  8%, 33%  { opacity: 1; }
-  45%, 100% { opacity: 0; }
+  5%, 25%  { opacity: 1; }
+  30%, 100% { opacity: 0; }
 }
 
 .cover-content {
