@@ -2732,3 +2732,8 @@ body.dark-mode .cookie-button:hover {
   }
 }
 
+/* 移除返回按钮的下划线动画（全局） */
+a.back-button::after {
+  display: none !important;
+}
+
