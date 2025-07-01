@@ -68,6 +68,22 @@
       overflow-x: auto;
       font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Liberation Mono', monospace;
     }
+    .responsive-video {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      display: block;
+      margin: 0 auto 1.5rem auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background: #000;
+    }
+    @media (max-width: 768px) {
+      .responsive-video {
+        max-width: 100%;
+        min-width: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -131,7 +147,7 @@
           <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
             Delivery Date
           </th>
-          <td style="padding: 0.5rem 0; color: var(--text-primary);">@2025年1月16日</td>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">2025/01/16</td>
         </tr>
         <tr class="property-row property-row-text">
           <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
@@ -175,7 +191,10 @@
 
       <div class="section">
         <h2>Video</h2>
-        <p><a href="src/projects/robotion/Robotion_demo.mp4">Robotion_demo.mp4</a></p>
+        <video controls class="responsive-video">
+          <source src="src/projects/robotion/Robotion_demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div class="section">
