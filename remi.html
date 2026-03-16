@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="src/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remi | Zheng Chen Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">
+        <img src="src/assets/logo_portfolio.png" alt="CZ Logo"/>
+      </a>
+    </div>
+
+    <ul class="menu" id="menu">
+      <div class="close-btn" id="close-menu">×</div>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="src/cv_cn.pdf">CV</a></li>
+    </ul>
+
+    <div class="toggle-right-controls">
+      <a href="#" id="toggle-dark">🌙</a>
+    </div>
+
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </div>
+</nav>
+
+<article class="page sans" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1rem;">
+  <header style="margin-bottom: 3rem;">
+    <h1 class="page-title" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
+      REMI Maintaining Independence: Conversational Support for Early-stage Dementia
+    </h1>
+    <p class="page-description">
+      How might we empower individuals with early-stage dementia to maintain their sense of identity
+      and purpose by providing a personalized, interactive physical companion that leverages their past
+      experiences and strengths to foster continued engagement in meaningful activities, as well as reduce
+      the burden on the caregiver?
+    </p>
+    <table class="properties" style="width: 100%; border-collapse: collapse;">
+      <tbody>
+        <tr class="property-row property-row-text">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Author(s)
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            AMAËL CACCIOLA, DAJANA SEEFLUTH, ZHENG CHEN
+          </td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Course
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-purple">
+              Multimodal Experience Design in Products
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </header>
+
+  <div class="page-body">
+    <!-- Project Content -->
+    <div class="project-content">
+      <div class="project-controls">
+        <div class="share-buttons">
+          <button class="share-btn twitter" onclick="shareOnTwitter()">
+            <i class="fab fa-twitter"></i>
+          </button>
+          <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
+            <i class="fab fa-linkedin-in"></i>
+          </button>
+          <button class="share-btn facebook" onclick="shareOnFacebook()">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>DESCRIPTION</h2>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Remi/1.jpg" alt="Remi device front view">
+            <div class="gallery-caption">Publications of Remi.</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Remi/2.jpg" alt="Remi device home interface">
+            <div class="gallery-caption">Pubblications of Remi.</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Remi/DSC04810.JPG" alt="Elderly person interacting with printed photos">
+            <div class="gallery-caption"></div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Remi/DSC04796.JPG" alt="Remi device with glowing LED ring">
+            <div class="gallery-caption"></div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Remi/DSC04819.JPG" alt="Remi device close-up of screen">
+            <div class="gallery-caption"></div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Remi/DSC04822.JPG" alt="Remi device in home context">
+            <div class="gallery-caption"></div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Remi/DSC04829.JPG" alt="Hands holding printed photographs">
+            <div class="gallery-caption"></div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Remi/DSC04879.JPG" alt="Remi device side view">
+            <div class="gallery-caption"></div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Remi/DSC04883.JPG" alt="Remi colour palette and branding">
+            <div class="gallery-caption"></div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Remi/DSC04885.JPG" alt="Remi device with caregivers’ photos">
+            <div class="gallery-caption"></div>
+          </div>
+        </div>
+        <p>
+          As an elderly person, it can be very scary when you notice that your memory is getting worse.
+          Maybe it starts with forgetting some names or frequently forgetting where you placed your keys.
+          It can be even more frustrating when you forget whether you have eaten already or when you get
+          lost and cannot recognize where you are or even how you got there. Many patients with dementia
+          try to hide their memory loss in front of peers and even family, as they do not want to admit they are
+          struggling and do not want to lose their independence. As a result, it also becomes harder for
+          family members to notice, talk about it and to offer help.
+        </p>
+        <p>
+          Remi helps patients with dementia as they are experiencing early and medium stages of the
+          cognitive disease. The project offers daily assistance and reminders as well as games to improve
+          their short and long-term memory.
+        </p>
+        <p>
+          The aim of Remi is to help dementia patients to stay more independent in the early stages
+          of dementia and keep them mentally engaged as the condition progresses. Remi helps them
+          navigate through the day, reminding them of their medication, appointments, and behaving as their
+          companion when they are confused or get lost. With the games and exercises, they can feel like
+          they are doing something against their memory loss.
+        </p>
+        <p>
+          Remi is primarily stationary and home-based, as most functions are used within the patient’s
+          home. Additionally, people can use Remi as a voice-assistant when they also leave the house.
+          That way, they can be reminded of important things, it can go through a shopping list with them
+          or can help them navigate to their destination when they are lost.
+        </p>
+        <p>
+          Through Remi, the progress of the patient can be tracked in a playful way and their family can be
+          aware of it. This opens up communication talking about progress on a game or on remembering
+          things from the past. In particular, Remi uses photos, sounds or music to start conversations
+          about their memories. The people can have the joy of remembering old memories and talking about
+          them. Remi plays the role of a family member.
+        </p>
+        <p>
+          Since it is set up with photos and audio uploaded by the family, it can give the people personalized
+          and meaningful answers.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>ETHICS</h2>
+        <p>
+          Remi is there to be personalized. Every person is different, so the functions, interactions, content
+          and data privacy will be set according to the user’s needs.
+        </p>
+        <p>
+          All data stored by Remi is only used for its intent of helping the patient and caregiver with the func-
+          tions included in Remi. The caregiver and patient set up the device together and decide how they
+          want to interact with it. It can be less invasive with soft lighting as a reminder or more prominent by
+          using sound as well. They can decide how long data is being stored and make changes in their
+          settings any time. The data can be stored locally on the device.
+        </p>
+        <p>
+          World Health Organization. (n.d.). Dementia [Fact sheet]. https://www.who.int/news-room/fact-sheets/detail/dementia
+        </p>
+      </div>
+
+      <!-- Resources Section -->
+      <div class="section">
+        <h2>Resources</h2>
+        <p>
+          <a href="https://doi.org/10.5281/zenodo.18186387" target="_blank">
+            Intimate Agents. Multimodal Experience Design in Products (SUPSI, 2026)
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- Image Modal -->
+<div id="imageModal" class="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-left">
+    <p>© 2025 Zheng Chen</p>
+    <p>Designing for Intelligent Systems, Interaction & Mobility</p>
+  </div>
+  <div class="footer-right">
+    <p>
+      <a href="mailto:leonardochen00@gmail.com"><i class="fas fa-envelope"></i> Email</a> |
+      <a href="https://github.com/yourname"><i class="fab fa-github"></i> Github</a>
+    </p>
+  </div>
+</footer>
+
+<!-- Back to top button -->
+<a href="javascript:history.back()" class="back-to-top back-button" title="Go Back">
+  <svg viewBox="0 0 24 24">
+    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+  </svg>
+</a>
+
+<script src="script.js"></script>
+<script>
+  // Modal functionality
+  function openModal(element) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const img = element.querySelector('img');
+    const backButton = document.querySelector('.back-button');
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    backButton.style.display = "none";
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    const backButton = document.querySelector('.back-button');
+    modal.style.display = "none";
+    backButton.style.display = "flex";
+  }
+
+  // Close modal when clicking outside the image
+  window.onclick = function(event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  // Share functionality
+  function shareOnTwitter() {
+    const text = "Check out this amazing project!";
+    const url = window.location.href;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+  }
+
+  function shareOnLinkedIn() {
+    const url = window.location.href;
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+  }
+
+  function shareOnFacebook() {
+    const url = window.location.href;
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+  }
+</script>
+</body>
+</html> 
