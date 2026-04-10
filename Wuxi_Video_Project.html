@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Wuxi — Audiovisual Short | Zheng Chen Portfolio</title>
+  <meta name="description" content="Short audiovisual piece introducing Wuxi to an Italian audience, inspired by João Pombeiro’s Chicago homage for Lance Skiiiwalker." />
+  <link rel="icon" type="image/png" href="src/assets/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    .page-body img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* —— Featured video (16:9) —— */
+    .video-feature {
+      margin: 1.5rem 0 2rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+      background: #0a0a0a;
+    }
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #111;
+    }
+    .video-frame iframe,
+    .video-frame video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      z-index: 1;
+    }
+    .video-frame video {
+      object-fit: contain;
+      background: #000;
+    }
+    .video-caption {
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary, #5f6368);
+      background: var(--card-bg, rgba(0, 0, 0, 0.04));
+    }
+
+    /* —— Grid of extra clips / B-roll —— */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      padding: 1rem 0 1.5rem;
+    }
+    .video-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      background: #0a0a0a;
+    }
+    .video-card .video-frame {
+      aspect-ratio: 16 / 9;
+    }
+    .video-card-caption {
+      padding: 0.6rem 0.85rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary, #5f6368);
+      background: var(--card-bg, #fff);
+    }
+
+    /* —— Stills (optional) —— */
+    .stills-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      padding: 16px 0;
+    }
+    .stills-gallery .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+    .stills-gallery .gallery-item:hover {
+      transform: scale(1.02);
+    }
+    .stills-gallery .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .stills-gallery .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.72);
+      color: #fff;
+      padding: 8px 10px;
+      font-size: 13px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .stills-gallery .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">
+        <img src="src/assets/logo_portfolio.png" alt="CZ Logo"/>
+      </a>
+    </div>
+
+    <ul class="menu" id="menu">
+      <div class="close-btn" id="close-menu">×</div>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="src/cv_cn.pdf">CV</a></li>
+    </ul>
+
+    <div class="toggle-right-controls">
+      <a href="#" id="toggle-dark">🌙</a>
+    </div>
+
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </div>
+</nav>
+
+<article class="page sans" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1rem;">
+  <header style="margin-bottom: 2rem;">
+    <h1 class="page-title" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Wuxi — Audiovisual Short</h1>
+    <p class="page-description">
+      A short audiovisual piece made for the university course <em>Linguaggi e tecniche dell’audiovisivo</em> (Prof.&nbsp;Bordin Vinicio). The work adapts the spirit of João Pombeiro’s video for <cite>Lance Skiiiwalker — Chicago</cite>: both image and music pay homage to a city—in that case moving from South Side to Downtown through civil rights, architecture, music, and multicultural life. Here the same collage-like approach is applied to <strong>Wuxi</strong>: a city well known in Asia but still unfamiliar in Europe. The film is meant to show the city’s character and to speak to <strong>Italian viewers and tourists</strong>, using a visual language rich in <strong>Chinese motifs</strong> (moodboard and treatment developed in the project dossier).
+    </p>
+    <table class="properties" style="width: 100%; border-collapse: collapse; margin-top: 1.25rem;">
+      <tbody>
+        <tr class="property-row property-row-text">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">Date</th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">2022</td>
+        </tr>
+        <tr class="property-row property-row-text">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">Duration</th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">Short form (see embedded video)</td>
+        </tr>
+        <tr class="property-row property-row-text">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">Format</th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">16:9 <span style="color: var(--text-secondary);">(HD / web delivery)</span></td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">Role</th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-purple">Concept, storyboard, shooting/editing, motion &amp; compositing</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </header>
+
+  <div class="page-body">
+    <div class="project-content">
+      <div class="project-controls">
+        <div class="share-buttons">
+          <button type="button" class="share-btn twitter" onclick="shareOnTwitter()" aria-label="Share on X">
+            <i class="fab fa-twitter"></i>
+          </button>
+          <button type="button" class="share-btn linkedin" onclick="shareOnLinkedIn()" aria-label="Share on LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </button>
+          <button type="button" class="share-btn facebook" onclick="shareOnFacebook()" aria-label="Share on Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- YouTube: /embed/VIDEO_ID only; src set in script (origin + enablejsapi helps avoid Error 153) -->
+      <section class="section">
+        <h2>Featured video</h2>
+        <div class="video-feature">
+          <div class="video-frame">
+            <iframe
+              id="wuxi-yt-embed"
+              title="Wuxi — audiovisual short"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <script>
+            (function () {
+              var el = document.getElementById('wuxi-yt-embed');
+              if (!el) return;
+              var vid = 'Lroo5qPQBpw';
+              var base = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(vid);
+              var q = new URLSearchParams({
+                rel: '0',
+                modestbranding: '1',
+                playsinline: '1',
+                enablejsapi: '1'
+              });
+              var o = window.location.origin;
+              if (o && o !== 'null') q.set('origin', o);
+              el.src = base + '?' + q.toString();
+            })();
+          </script>
+          <p class="video-caption">City portrait of Wuxi for an Italian audience; Chinese visual motifs throughout (see moodboard in course PDF). <a href="https://youtu.be/Lroo5qPQBpw" target="_blank" rel="noopener noreferrer">Open on YouTube</a>. If you see Error 153, use that link or test on the published HTTPS site (not <code>file://</code>).</p>
+        </div>
+      </section>
+
+      <!-- B) Self-hosted — uncomment this block and remove the iframe section above if you host MP4/WebM.
+      <section class="section">
+        <h2>Featured video</h2>
+        <div class="video-feature">
+          <div class="video-frame">
+            <video controls playsinline preload="metadata" poster="[POSTER_IMAGE_PATH]">
+              <source src="[VIDEO_MP4_PATH]" type="video/mp4" />
+              <source src="[VIDEO_WEBM_PATH]" type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p class="video-caption">[VIDEO_CAPTION]</p>
+        </div>
+      </section>
+      -->
+
+      <section class="section">
+        <h2>Inspiration</h2>
+        <p>
+          The project explicitly references <strong>João Pombeiro</strong>’s treatment of <cite>Lance Skiiiwalker — Chicago</cite>: a fast, collage-like journey through a city’s identity. The Wuxi piece translates that method—panorama, history, food, culture, infrastructure, and return to the opening view—into local imagery and Chinese visual elements, as laid out in the moodboard and multi-scene storyboard in the PDF dossier.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Narrative structure (from storyboard)</h2>
+        <p>The edit follows the scene breakdown prepared for the course:</p>
+        <ul style="line-height: 1.65; max-width: 52rem;">
+          <li><strong>Scenes 1–2:</strong> Panoramic illustration; introduction to the city’s history.</li>
+          <li><strong>Scenes 4–5:</strong> Humanities thread; local cuisine and typical dishes.</li>
+          <li><strong>Scenes 6–7:</strong> Cultural section; urban infrastructure.</li>
+          <li><strong>Scenes 8–9:</strong> Urban infrastructure; transition.</li>
+          <li><strong>Scenes 10–11:</strong> Video mixing; return to the opening panorama.</li>
+        </ul>
+        <p style="margin-top: 1rem; color: var(--text-secondary, #5f6368); font-size: 0.95rem;">Scene numbering follows the submitted storyboard sheets; add still frames to the gallery below when you export key frames from the timeline.</p>
+        <div class="stills-gallery">
+          <!-- Add exported frames, e.g. src="src/projects/wuxi/storyboard-01.jpg" -->
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Resources</h2>
+        <p><a href="https://vimeo.com/696218740" target="_blank" rel="noopener noreferrer">Reference: Lance Skiiiwalker — <em>Chicago</em> (dir. João Pombeiro, Vimeo)</a></p>
+      </section>
+    </div>
+  </div>
+</article>
+
+<!-- Image modal (stills) -->
+<div id="imageModal" class="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage" alt="" />
+</div>
+
+<footer>
+  <div class="footer-left">
+    <p>© 2025 Zheng Chen</p>
+    <p>Designing for Intelligent Systems, Interaction & Mobility</p>
+  </div>
+  <div class="footer-right">
+    <p>
+      <a href="mailto:leonardochen00@gmail.com"><i class="fas fa-envelope"></i> Email</a> |
+      <a href="https://github.com/leonardo-chen"><i class="fab fa-github"></i> Github</a>
+    </p>
+  </div>
+</footer>
+
+<a href="javascript:history.back()" class="back-to-top back-button" title="Go Back">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+  </svg>
+</a>
+
+<script src="script.js"></script>
+<script>
+  function openModal(element) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const img = element.querySelector('img');
+    const backButton = document.querySelector('.back-button');
+    if (!img) return;
+    modal.style.display = 'block';
+    modalImg.src = img.src;
+    modalImg.alt = img.alt || '';
+    backButton.style.display = 'none';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    const backButton = document.querySelector('.back-button');
+    modal.style.display = 'none';
+    backButton.style.display = 'flex';
+  }
+
+  window.addEventListener('click', function (event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  function shareOnTwitter() {
+    const text = document.title || 'Video project';
+    const url = window.location.href;
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank');
+  }
+
+  function shareOnLinkedIn() {
+    const url = window.location.href;
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url), '_blank');
+  }
+
+  function shareOnFacebook() {
+    const url = window.location.href;
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank');
+  }
+</script>
+</body>
+</html>

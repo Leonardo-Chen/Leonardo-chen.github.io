@@ -54,6 +54,113 @@
         max-width: none;
       }
     }
+    @property --paintings-search-angle {
+      syntax: "<angle>";
+      inherits: false;
+      initial-value: 0deg;
+    }
+    .project-more-info-shell {
+      --md-sys-color-google-blue: #4285f4;
+      --md-sys-color-google-red: #ea4335;
+      --md-sys-color-google-yellow: #fbbc05;
+      --md-sys-color-google-green: #34a853;
+      --ring: 3px;
+      --speed: 3s;
+      margin: 2rem auto 0;
+      display: flex;
+      justify-content: center;
+      color-scheme: light dark;
+    }
+    .project-more-info-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 40px;
+      padding: var(--ring);
+      text-decoration: none;
+      color: inherit;
+      background: transparent;
+      outline: none;
+    }
+    .project-more-info-button::before,
+    .project-more-info-button::after {
+      animation: none;
+      background: none;
+      pointer-events: none;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .project-more-info-button:hover::before,
+      .project-more-info-button:hover::after,
+      .project-more-info-button:focus-visible::before,
+      .project-more-info-button:focus-visible::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 40px;
+        background: linear-gradient(light-dark(#fff, #111), light-dark(#fff, #111)) padding-box,
+          conic-gradient(
+            from var(--paintings-search-angle),
+            var(--md-sys-color-google-blue) 0deg 20deg,
+            var(--md-sys-color-google-red) 30deg 50deg,
+            var(--md-sys-color-google-yellow) 60deg 80deg,
+            var(--md-sys-color-google-green) 90deg 110deg,
+            transparent 120deg 360deg
+          ) border-box;
+        border: var(--ring) solid transparent;
+        animation: paintingsSearchSpin var(--speed) linear forwards;
+        will-change: background;
+      }
+    }
+    .project-more-info-button:hover::after,
+    .project-more-info-button:focus-visible::after {
+      filter: blur(8px);
+    }
+    .project-more-info-button-text {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 148px;
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: light-dark(#ffffff, #121316);
+      color: light-dark(#202124, #f1f3f4);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      box-shadow: light-dark(
+        0 1px 2px rgba(60, 64, 67, 0.15), 0 0 0 1px rgba(60, 64, 67, 0.05),
+        0 1px 2px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08)
+      );
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .project-more-info-button:hover .project-more-info-button-text,
+    .project-more-info-button:focus-visible .project-more-info-button-text {
+      transform: translateY(-1px);
+      background: light-dark(#f8f9fa, #1a1c20);
+      box-shadow: light-dark(
+        0 3px 6px rgba(60, 64, 67, 0.15), 0 1px 3px rgba(60, 64, 67, 0.10),
+        0 3px 8px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.10)
+      );
+    }
+    @keyframes paintingsSearchSpin {
+      10% {
+        --paintings-search-angle: 0.3turn;
+        opacity: 1;
+      }
+      90% {
+        --paintings-search-angle: 1turn;
+        opacity: 1;
+      }
+      100% {
+        --paintings-search-angle: 1.5turn;
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -178,167 +285,16 @@
             <img src="src/projects/paintings/painting10.jpg" alt="Painting 10" loading="lazy">
             <div class="gallery-caption">Painting 10</div>
           </div>
-          <div class="gallery-item">
-            <div class="gallery-item" onclick="openModal(this)">
-              <img src="src/projects/paintings/painting11.jpg" alt="Painting 11" loading="lazy">
-              <div class="gallery-caption">
-                Life among De Divine Proportione<br>
-                <style>
-                  /* Google AI Mode 顺时针流动高光光条 */
-                  .gradient-border {
-                    --ring: 1.4px; /* 极细的边框，更显精致 */
-                    --chip-bg: #fff;
-                    --chip-bg-hover: #f8f9fa;
-                    --chip-fg: #202124;
-                    
-                    /* 定义 Google 标志性的流动颜色序列 */
-                    --google-blue: #4285f4;
-                    --google-purple: #8e5cf6;
-                    --google-red: #ea4335;
-                    --google-yellow: #fbbc04;
-                    --google-green: #34a853;
-                    
-                    box-sizing: border-box;
-                    position: relative;
-                    display: inline-flex;
-                    align-items: stretch;
-                    justify-content: stretch;
-                    min-width: 140px; /* 稍微加宽一点，给光条流动的空间 */
-                    min-height: 36px;
-                    margin-top: 4px;
-                    padding: var(--ring);
-                    border-radius: 9999px;
-                    text-decoration: none;
-                    font-family: "Google Sans", "Plus Jakarta Sans", system-ui, sans-serif;
-                    font-size: 0.875rem;
-                    font-weight: 500;
-                    letter-spacing: 0.01em;
-                    color: var(--chip-fg);
-                    background: transparent;
-                    overflow: hidden; /* 裁剪掉溢出的旋转层 */
-                    isolation: isolate;
-                    
-                    /* 模仿 Google 风格的微妙阴影 */
-                    box-shadow: 
-                      0 1px 2px rgba(60, 64, 67, 0.15),
-                      0 0 0 1px rgba(60, 64, 67, 0.05);
-                    transition: box-shadow 0.2s ease, transform 0.2s ease;
-                  }
-                
-                  .gradient-border:hover,
-                  .gradient-border:focus-visible {
-                    box-shadow:
-                      0 3px 6px rgba(60, 64, 67, 0.15),
-                      0 1px 3px rgba(60, 64, 67, 0.10);
-                    transform: translateY(-0.5px); /* 极轻微的悬浮 */
-                    outline: none;
-                  }
-                
-                  /* 这是实现顺时针流动光条和高光的关键 */
-                  .gradient-border::before {
-                    content: '';
-                    position: absolute;
-                    /* 必须足够大，覆盖整个按钮旋转时不露出马脚 */
-                    inset: -150%; 
-                    z-index: 0;
-                    
-                    /* 使用 conic-gradient 创建一个极窄的、带高光的彩色光条 */
-                    /* 我们让绝大部分区域透明 */
-                    background: conic-gradient(
-                      from 0deg at 50% 50%,
-                      
-                      /* 1. 起始部分：透明 */
-                      transparent 0deg,
-                      transparent 150deg, /* 调节这个角度可以改变光条的起始位置 */
-                      
-                      /* 2. 高光 (Highlight)：紧接着彩虹的头部 */
-                      rgba(255, 255, 255, 0) 150deg,
-                      rgba(255, 255, 255, 1) 152deg, /* 极窄的高亮白 */
-                      rgba(255, 255, 255, 1) 154deg,
-                      
-                      /* 3. 彩虹色带 (Rainbow band)：顺时针紧跟高光 */
-                      var(--google-blue) 154deg,
-                      var(--google-purple) 162deg,
-                      var(--google-red) 170deg,
-                      var(--google-yellow) 178deg,
-                      var(--google-green) 186deg,
-                      
-                      /* 4. 结尾部分：透明 */
-                      rgba(52, 168, 83, 0) 190deg, /* 绿色淡出 */
-                      transparent 190deg,
-                      transparent 360deg
-                    );
-                    
-                    /* 性能优化：模糊处理，让光条边缘更柔和，更有 AI 模型的神秘感 */
-                    filter: blur(1.5px);
-                
-                    /* 应用顺时针旋转动画 */
-                    animation: gradient-border-spin 4s linear infinite;
-                    pointer-events: none;
-                    will-change: transform;
-                  }
-                
-                  /* 悬停时加快流动速度 */
-                  .gradient-border:hover::before {
-                    animation-duration: 2s;
-                  }
-                
-                  /* 定义顺时针旋转动画 */
-                  @keyframes gradient-border-spin {
-                    from {
-                      transform: rotate(0deg);
-                    }
-                    to {
-                      transform: rotate(360deg);
-                    }
-                  }
-                
-                  .gradient-border > span {
-                    position: relative;
-                    z-index: 1;
-                    flex: 1;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 8px;
-                    width: 100%;
-                    /* 计算内部高度，扣除上下边框 */
-                    min-height: calc(36px - 2 * var(--ring));
-                    padding: 0 16px 0 14px;
-                    border-radius: 9999px;
-                    /* 中间的遮罩层，必须设为 !important 以覆盖可能的行内样式 */
-                    background: var(--chip-bg) !important;
-                    transition: background 0.2s ease;
-                  }
-                
-                  .gradient-border:hover > span,
-                  .gradient-border:focus-visible > span {
-                    background: var(--chip-bg-hover) !important;
-                  }
-                
-                  .gradient-border-icon {
-                    flex-shrink: 0;
-                    color: var(--google-blue); /* 将图标设为 Google 蓝 */
-                    opacity: 0.9;
-                  }
-                </style>
-                
-         
-         
-    
-       
-              </div>
-            </div>
- 
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/paintings/painting11.jpg" alt="Painting 11" loading="lazy">
+            <div class="gallery-caption">Life among De Divine Proportione</div>
+          </div>
         </div>
-        <div style="display: flex; justify-content: center; align-items: center;">
-          <a href="https://leoanrdo.webflow.io/" target="_blank" class="gradient-border" rel="noopener noreferrer">
-            <span>
-              MORE INFO
-            </span>
+        <div class="project-more-info-shell">
+          <a class="project-more-info-button" href="https://leoanrdo.webflow.io/" target="_blank" rel="noopener noreferrer" aria-label="Open more info">
+            <span class="project-more-info-button-text">MORE INFO</span>
           </a>
         </div>
-        <p>Each work is shown full-width in its own row; tap or click to view larger.</p>
       </div>
 
       <div class="section">

@@ -172,20 +172,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Cookie Consent
+  // Cookie Consent (only on pages that include the banner markup)
   const cookieConsent = document.getElementById('cookie-consent');
   const acceptCookies = document.getElementById('accept-cookies');
-  
-  // Check if user has already accepted cookies
-  if (!localStorage.getItem('cookiesAccepted')) {
-    cookieConsent.style.display = 'flex';
+  if (cookieConsent && acceptCookies) {
+    if (!localStorage.getItem('cookiesAccepted')) {
+      cookieConsent.style.display = 'flex';
+    }
+    acceptCookies.addEventListener('click', function () {
+      localStorage.setItem('cookiesAccepted', 'true');
+      cookieConsent.style.display = 'none';
+    });
   }
-  
-  // Handle cookie acceptance
-  acceptCookies.addEventListener('click', function() {
-    localStorage.setItem('cookiesAccepted', 'true');
-    cookieConsent.style.display = 'none';
-  });
 });
 
 // ===== Filter Functionality =====
@@ -203,7 +201,7 @@ filterButtons.forEach(button => {
 
     // Show/hide projects based on category
     projects.forEach(project => {
-      const categories = project.getAttribute('data-category').split(' ');
+      const categories = (project.getAttribute('data-category') || '').split(/\s+/).filter(Boolean);
       if (filter === 'all' || categories.includes(filter)) {
         project.style.display = 'flex';
       } else {
