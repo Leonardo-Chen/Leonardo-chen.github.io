@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Race | Zheng Chen Portfolio</title>
+  <link rel="icon" type="image/png" href="src/assets/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    .page-body img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .hero-image,
+    .gallery,
+    .prototype-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px 0;
+    }
+    .hero-image {
+      grid-template-columns: 1fr;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      background: var(--card-bg, rgba(255, 255, 255, 0.7));
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-image .gallery-item img {
+      height: auto;
+      max-height: 680px;
+      object-fit: contain;
+      background: #111;
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.78) 100%);
+      color: white;
+      padding: 36px 16px 16px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+    .section {
+      margin-bottom: 3.5rem;
+    }
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+    .section p,
+    .section li {
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+    .section ul,
+    .section ol {
+      padding-left: 1.3rem;
+    }
+    .intro-note {
+      background: rgba(127, 127, 127, 0.08);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-top: 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 1.5rem;
+    }
+    .info-card,
+    .resource-card {
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.25rem;
+      background: rgba(127, 127, 127, 0.05);
+    }
+    .info-card h3,
+    .resource-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+    .video-feature {
+      margin: 1.5rem 0 2rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+      background: #0a0a0a;
+    }
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #111;
+    }
+    .video-frame iframe,
+    .video-frame video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      z-index: 1;
+    }
+    .video-frame video {
+      object-fit: contain;
+      background: #000;
+    }
+    .video-caption {
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary, #5f6368);
+      background: var(--card-bg, rgba(0, 0, 0, 0.04));
+    }
+    .code-block {
+      background: #111827;
+      color: #e5e7eb;
+      border-radius: 14px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      line-height: 1.6;
+      font-size: 0.92rem;
+      margin-top: 1rem;
+    }
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 1.2rem;
+    }
+    .resource-card a {
+      color: var(--text-primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .resource-card a:hover {
+      text-decoration: underline;
+    }
+    .resource-card p {
+      margin-bottom: 0;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 768px) {
+      .gallery,
+      .prototype-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .gallery-item img {
+        height: 260px;
+      }
+    }
+  </style>
+  <script src="analytics-config.js"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">
+        <img src="src/assets/logo_portfolio.png" alt="CZ Logo"/>
+      </a>
+    </div>
+
+    <ul class="menu" id="menu">
+      <div class="close-btn" id="close-menu">×</div>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="src/cv_cn.pdf">CV</a></li>
+    </ul>
+
+    <div class="toggle-right-controls">
+      <a href="#" id="toggle-dark">🌙</a>
+    </div>
+
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </div>
+</nav>
+
+<article class="page sans" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1rem;">
+  <header style="margin-bottom: 3rem;">
+    <h1 class="page-title" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Pixel Race</h1>
+    <p class="page-description">An innovative motion-controlled racing game running on a custom-built LED matrix device, combining accelerometer input, dynamic visuals, and an accessible arcade experience.</p>
+    <table class="properties" style="width: 100%; border-collapse: collapse;">
+      <tbody>
+        <tr class="property-row property-row-text">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Author(s)
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">Zheng Chen, Nicolò Beghetto</td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Academic Year
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-green">Jan 24, 2025</span>
+          </td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Course
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-purple">Physical Computing / Interactive Prototyping</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </header>
+
+  <div class="page-body">
+    <div class="project-content">
+      <div class="project-controls">
+        <div class="share-buttons">
+          <button class="share-btn twitter" onclick="shareOnTwitter()">
+            <i class="fab fa-twitter"></i>
+          </button>
+          <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
+            <i class="fab fa-linkedin-in"></i>
+          </button>
+          <button class="share-btn facebook" onclick="shareOnFacebook()">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="hero-image">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/pixel_race1.jpg" alt="Pixel Race hero image">
+            <div class="gallery-caption">Pixel Race prototype and final handheld racing device</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Abstract</h2>
+        <p>Pixel Race is an innovative motion-controlled racing game designed to run on a custom-built LED matrix device. Combining intuitive accelerometer-based controls, dynamic visuals, and an engaging gameplay experience, this device offers a blend of fun and challenge for players of all ages.</p>
+      </section>
+
+      <section class="section">
+        <h2>Concept</h2>
+        <p>In an era where video games are becoming increasingly digital with the help of AI, Pixel Race attempts to rediscover the charm of classic '70s and '80s arcade experiences through a tangible, playful, and physical interface.</p>
+      </section>
+
+      <section class="section">
+        <h2>Video</h2>
+        <div class="video-feature">
+          <div class="video-frame">
+            <iframe
+              title="Pixel Race video"
+              src="https://www.youtube.com/embed/uv5XWIpdNSk?si=WR8neNnhnyndYkNx"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <p class="video-caption">Demonstration of Pixel Race running on the motion-controlled LED matrix device.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Gallery</h2>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/1.jpg" alt="Pixel Race gallery image 1">
+            <div class="gallery-caption">Final prototype overview</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/3.jpg" alt="Pixel Race gallery image 2">
+            <div class="gallery-caption">LED matrix and gameplay visuals</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/2.jpg" alt="Pixel Race gallery image 3">
+            <div class="gallery-caption">Physical interaction details</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/4.jpg" alt="Pixel Race gallery image 4">
+            <div class="gallery-caption">Gameplay in use</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/5.jpg" alt="Pixel Race gallery image 5">
+            <div class="gallery-caption">Prototype testing snapshot</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/6.jpg" alt="Pixel Race gallery image 6">
+            <div class="gallery-caption">Prototype testing snapshot</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Device Overview</h2>
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Hardware Stack</h3>
+            <ol>
+              <li><strong>LIS3DHTR accelerometer sensor</strong>: Detects the player's hand motion to control the vehicle position.</li>
+              <li><strong>RGB LED matrix</strong>: Displays the game using vibrant colors and smooth animations.</li>
+              <li><strong>Arduino Nano ESP32</strong>: Drives the game loop and sensor integration.</li>
+              <li><strong>Custom game logic</strong>: Written in C++ using Arduino libraries, including obstacles, scoring, and high-score tracking.</li>
+            </ol>
+          </div>
+          <div class="info-card">
+            <h3>Core Experience</h3>
+            <p>The game runs on a 32x32 LED matrix and turns simple body movement into a racing interaction. Instead of pressing buttons, players steer by tilting the device, creating a more immediate and embodied connection to the game.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Gameplay Mechanics</h2>
+        <ul>
+          <li><strong>Motion Control</strong>: Players tilt the device left or right to steer the vehicle, with the accelerometer translating movement into precise in-game motion.</li>
+          <li><strong>Dynamic Obstacles</strong>: Random obstacles move downward to simulate a racing environment, requiring quick reactions and continuous correction.</li>
+          <li><strong>Scoring System</strong>: Points are awarded for each obstacle successfully passed, while the high score keeps track of the best session and resets after reaching 999.</li>
+          <li><strong>Welcome Page</strong>: The device opens with a title screen and starts only when motion is detected, making the interaction feel intentional and performative.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Game Features</h2>
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Immersive Visuals</h3>
+            <ul>
+              <li>Dual dashed road lines reinforce the sense of speed.</li>
+              <li>Bright obstacles and a clearly defined vehicle improve readability on the LED matrix.</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>Game Over Feedback</h3>
+            <p>At the end of each session, the game displays the player's score and top score in a simple visual layout designed for quick understanding on a compact screen.</p>
+          </div>
+          <div class="info-card">
+            <h3>Replay Motivation</h3>
+            <p>The high-score reset at 999 encourages repeated play and keeps the game loop lightweight, competitive, and easy to understand.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Device Features</h2>
+        <p>We designed the device with a standby mode to optimize the user experience and make the game feel responsive only when someone is ready to interact with it.</p>
+        <ul>
+          <li><strong>Standby mode</strong> is the idle state where the game waits for motion detection.</li>
+          <li>The screen displays <strong>"PIXEL RACE"</strong>, and the game does not start automatically.</li>
+          <li>The <strong>LIS3DHTR accelerometer</strong> continuously checks for movement using <code>detectMotion()</code>.</li>
+          <li>If no motion is detected, the game remains in standby mode.</li>
+          <li>If motion exceeds a threshold, <code>deviceActive = true</code> and the game starts.</li>
+          <li>A welcome countdown appears via <code>showWelcomePage()</code>, then gameplay begins.</li>
+          <li>After game over, the system returns to standby and waits for motion again.</li>
+        </ul>
+        <pre class="code-block"><code>void detectMotion() {
+    float x = LIS.getAccelerationX();
+    float y = LIS.getAccelerationY();
+    float z = LIS.getAccelerationZ();
+
+    Serial.print("X: "); Serial.print(lastX);
+    Serial.print(" Y: "); Serial.print(lastY);
+    Serial.print(" Z: "); Serial.println(lastZ);
+
+    float deltaX = abs(x - lastX);
+    float deltaY = abs(y - lastY);
+    float deltaZ = abs(z - lastZ);
+
+    lastX = x;
+    lastY = y;
+    lastZ = z;
+
+    if (deltaX &gt; MOTION_THRESHOLD || deltaY &gt; MOTION_THRESHOLD || deltaZ &gt; MOTION_THRESHOLD) {
+        deviceActive = true;
+    } else {
+        deviceActive = false;
+        Serial.println("Device is idle. Waiting for motion...");
+    }
+}</code></pre>
+      </section>
+
+      <section class="section">
+        <h2>Prototyping Phase</h2>
+        <div class="prototype-grid">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/sketch.HEIC.png" alt="Gameplay setting sketch">
+            <div class="gallery-caption">Gameplay setting sketch</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/Main_Structure.jpg" alt="Initial game code testing">
+            <div class="gallery-caption">Main structure game demo</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/accelerometer.jpg" alt="Hardware deployment methods">
+            <div class="gallery-caption">Accelerometer module connection</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/Sensor_Layout.jpg" alt="Prototype testing">
+            <div class="gallery-caption">Sensor layout</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/Pixel_Race/Handle.jpg" alt="Handheld testing">
+            <div class="gallery-caption">Handheld testing</div>
+          </div>
+        </div>
+        <p>Once the main framework of the game was working properly, we focused on optimizing the graphics, refining the sensor layout, and testing handheld interactions to make the device intuitive, responsive, and robust enough for repeated play.</p>
+      </section>
+
+    </div>
+  </div>
+</article>
+
+<!-- Image Modal -->
+<div id="imageModal" class="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage" alt="Expanded project image">
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-left">
+    <p>© 2025 Zheng Chen</p>
+    <p>Designing for Intelligent Systems, Interaction & Mobility</p>
+  </div>
+  <div class="footer-right">
+    <p>
+      <a href="mailto:leonardochen00@gmail.com" aria-label="Send email to Zheng Chen"><i class="fas fa-envelope"></i> Email</a> |
+      <a href="https://github.com/leonardo-chen" aria-label="Visit Zheng Chen's GitHub profile"><i class="fab fa-github"></i> Github</a> |
+      <a href="privacy-policy.html" aria-label="Privacy Policy">Privacy Policy</a>
+    </p>
+  </div>
+</footer>
+
+<!-- Back to top button -->
+<a href="javascript:history.back()" class="back-to-top back-button" title="Go Back">
+  <svg viewBox="0 0 24 24">
+    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+  </svg>
+</a>
+
+<script src="script.js"></script>
+<script>
+  function openModal(element) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const img = element.querySelector('img');
+    const backButton = document.querySelector('.back-button');
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    backButton.style.display = "none";
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    const backButton = document.querySelector('.back-button');
+    modal.style.display = "none";
+    backButton.style.display = "flex";
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  };
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  function shareOnTwitter() {
+    const text = "Check out Pixel Race, a motion-controlled LED matrix racing game.";
+    const url = window.location.href;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+  }
+
+  function shareOnLinkedIn() {
+    const url = window.location.href;
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+  }
+
+  function shareOnFacebook() {
+    const url = window.location.href;
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+  }
+</script>
+</body>
+</html>
