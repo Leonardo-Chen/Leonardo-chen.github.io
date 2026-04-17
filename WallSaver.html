@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wall Saver is an AI-driven interactive projection system that adapts projected video content to people's activities and the surrounding environment." />
+  <title>Wall Saver | Zheng Chen Portfolio</title>
+  <link rel="icon" type="image/png" href="src/assets/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    .page-body img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .hero-image,
+    .gallery,
+    .feature-grid,
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px 0;
+    }
+    .hero-image {
+      grid-template-columns: 1fr;
+      padding-top: 0;
+    }
+    .gallery-item,
+    .feature-card,
+    .info-card {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      background: var(--card-bg, rgba(255, 255, 255, 0.7));
+      border: 1px solid var(--border-color);
+    }
+    .gallery-item {
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-image .gallery-item img {
+      height: auto;
+      max-height: 720px;
+      object-fit: contain;
+      background: #111;
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+      color: #fff;
+      padding: 36px 16px 16px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+    .section {
+      margin-bottom: 3.5rem;
+    }
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+    .section p,
+    .section li {
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+    .section ul {
+      padding-left: 1.3rem;
+    }
+    .video-feature {
+      margin: 1.5rem 0 2rem;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+      background: #0a0a0a;
+    }
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #111;
+    }
+    .video-frame iframe,
+    .video-frame video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+      object-fit: contain;
+      background: #000;
+    }
+    .video-caption {
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary, #5f6368);
+      background: var(--card-bg, rgba(0, 0, 0, 0.04));
+    }
+    .feature-card,
+    .info-card {
+      padding: 1.25rem;
+    }
+    .feature-card h3,
+    .info-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.08rem;
+    }
+    .feature-card p,
+    .info-card p {
+      margin-bottom: 0;
+      color: var(--text-secondary);
+    }
+    .journey-note {
+      background: rgba(127, 127, 127, 0.08);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+      color: var(--text-secondary);
+    }
+    .code-block {
+      background: #111827;
+      color: #e5e7eb;
+      border-radius: 14px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      line-height: 1.6;
+      font-size: 0.92rem;
+      margin-top: 1rem;
+    }
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .resource-link:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .gallery,
+      .feature-grid,
+      .content-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .gallery-item img {
+        height: 260px;
+      }
+    }
+  </style>
+  <script src="analytics-config.js"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">
+        <img src="src/assets/logo_portfolio.png" alt="CZ Logo"/>
+      </a>
+    </div>
+
+    <ul class="menu" id="menu">
+      <div class="close-btn" id="close-menu">×</div>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="src/cv_cn.pdf">CV</a></li>
+    </ul>
+
+    <div class="toggle-right-controls">
+      <a href="#" id="toggle-dark">🌙</a>
+    </div>
+
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </div>
+</nav>
+
+<article class="page sans" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1rem;">
+  <header style="margin-bottom: 3rem;">
+    <h1 class="page-title" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Wall Saver</h1>
+    <p class="page-description">An AI-driven interactive projection system that detects human activity and environmental context, then dynamically selects ambient video content to transform the space in real time.</p>
+    <table class="properties" style="width: 100%; border-collapse: collapse;">
+      <tbody>
+        <tr class="property-row property-row-text">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Author(s)
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">Zheng Chen, Amaël Cacciola</td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Date
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-green">Interactive installation / AI projection experiment</span>
+          </td>
+        </tr>
+        <tr class="property-row property-row-select">
+          <th style="text-align: left; padding: 0.5rem 0; color: var(--text-secondary);">
+            Focus
+          </th>
+          <td style="padding: 0.5rem 0; color: var(--text-primary);">
+            <span class="selected-value select-value-color-purple">Computer vision, adaptive media, ambient interaction</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </header>
+
+  <div class="page-body">
+    <div class="project-content">
+      <div class="project-controls">
+        <div class="share-buttons">
+          <button type="button" class="share-btn twitter" onclick="shareOnTwitter()" aria-label="Share on X">
+            <i class="fab fa-twitter"></i>
+          </button>
+          <button type="button" class="share-btn linkedin" onclick="shareOnLinkedIn()" aria-label="Share on LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </button>
+          <button type="button" class="share-btn facebook" onclick="shareOnFacebook()" aria-label="Share on Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="hero-image">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/WallSaver/1.jpg" alt="Wall Saver installation overview">
+            <div class="gallery-caption">Wall Saver installation overview</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Abstract</h2>
+        <p>Wall Saver is an AI-driven interactive projection system that dynamically adjusts projected content based on detected human activity and the surrounding environment. Using a camera and AI analysis, the system identifies people's postures, activities, and objects in the scene, then selects the most suitable video to enhance the atmosphere.</p>
+        <p>This concept uses AI-powered scene recognition and dynamic content delivery to create immersive, interactive environments, transforming ordinary spaces into personalized ambient experiences.</p>
+      </section>
+
+      <section class="section">
+        <h2>Video</h2>
+        <div class="video-feature">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/c_42Le03I9Y?si=B-9azU_hwC39r67F"
+              title="Wall Saver video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </div>
+          <p class="video-caption">Demonstration of the Wall Saver system detecting activity and changing projection content in response.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Selected Images</h2>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/WallSaver/2.jpg" alt="Wall Saver setup view 1">
+            <div class="gallery-caption">System setup and projected environment</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/WallSaver/3.JPG.jpg" alt="Wall Saver setup view 2">
+            <div class="gallery-caption">Interaction scenario with adaptive projection</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/WallSaver/4.JPG.jpg" alt="Wall Saver setup view 3">
+            <div class="gallery-caption">Ambient response to user posture and context</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/WallSaver/5.JPG.jpg" alt="Wall Saver setup view 4">
+            <div class="gallery-caption">Projection behavior during activity detection</div>
+          </div>
+          <div class="gallery-item" onclick="openModal(this)">
+            <img src="src/projects/WallSaver/6.JPG.jpg" alt="Wall Saver setup view 5">
+            <div class="gallery-caption">Installation detail and final viewing experience</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How It Works</h2>
+        <p>At the core of the system is a connected camera that captures real-time images of the surrounding environment. AI analyzes each frame, recognizing people, postures, and contextual objects such as laptops, books, headphones, speakers, cups, or bottles. Based on this reading of the scene, the system classifies the user's activity and triggers a matching visual projection.</p>
+        <ul>
+          <li><strong>Work:</strong> detects a person using a computer.</li>
+          <li><strong>Read:</strong> identifies reading behavior.</li>
+          <li><strong>Relax:</strong> recognizes a seated posture without holding objects.</li>
+          <li><strong>Party:</strong> detects more than two people with no computer present.</li>
+          <li><strong>Drink:</strong> identifies cups or bottles in use.</li>
+          <li><strong>Music:</strong> detects headphones or speakers.</li>
+          <li><strong>Love:</strong> captures special moments through subtle gesture cues.</li>
+        </ul>
+        <p>Once the state is identified, Wall Saver automatically selects and projects the most appropriate video content for that moment. The entire flow is hands-free, creating a seamless and intuitive interaction between the user, the room, and the projected media.</p>
+      </section>
+
+      <section class="section">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>AI-Powered Scene Recognition</h3>
+            <p>Real-time detection of people, objects, and activity cues in the environment.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Dynamic Content Selection</h3>
+            <p>Projection content changes automatically to match the user's current state.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Automatic Projection</h3>
+            <p>No manual input is required once the system is placed and running.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Smart Audio Control</h3>
+            <p>Optional sound playback can be enabled to enrich immersion when needed.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Engaging Ambient Experience</h3>
+            <p>The projected visuals adapt to daily routines and help shape a personalized atmosphere.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Future Improvements</h2>
+        <ul>
+          <li><strong>Expanded Activity Recognition:</strong> support for exercise, meditation, phone use, and other everyday behaviors.</li>
+          <li><strong>User Customization:</strong> manual override options for users who want to choose or fine-tune the projected mood.</li>
+          <li><strong>Smart IoT Integration:</strong> synchronization with lighting and sound systems for a richer multisensory environment.</li>
+        </ul>
+        <p>This adaptive approach rethinks digital space as something responsive and emotionally aware, blending AI, projection, and everyday behavior into a single ambient system.</p>
+      </section>
+
+      <section class="section">
+        <h2>User Journey</h2>
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Simple Setup</h3>
+            <p>Users place the device in a suitable location, point the camera toward the scene, and launch the web-based analyzer.</p>
+          </div>
+          <div class="info-card">
+            <h3>Automatic Analysis</h3>
+            <p>The system continuously reads the environment and infers activity without additional input.</p>
+          </div>
+          <div class="info-card">
+            <h3>Ambient Response</h3>
+            <p>Projection content updates in real time so the room feels responsive, contextual, and personalized.</p>
+          </div>
+        </div>
+        <p class="journey-note">The intended experience is minimal and effortless: place the device, open the analyzer, and let the system respond automatically.</p>
+      </section>
+
+      <section class="section">
+        <h2>Coding</h2>
+        <p>The basic code structure uses a camera feed to capture the current activity, converts the image into a format suitable for analysis, and sends it to ChatGPT for scene understanding. Based on the returned state, the system selects a matching projection video and sends it to the projector.</p>
+      </section>
+
+      <section class="section">
+        <h2>LLM Prompt</h2>
+        <p>After analyzing the image content, the AI selects the most appropriate state according to the prompt description and returns JSON data containing the pose, whether a computer is present, the number of people, and a short scene description.</p>
+        <pre class="code-block"><code>const messages = [
+  {
+    role: "user",
+    content: [
+      {
+        type: "text",
+        text: "What's in the image? Is there a person? " +
+              "If there is a person, Please identify the pose of the person. " +
+              "The pose could be: " +
+              "'work' (if there's a person using a computer), " +
+              "'read' (if someone is reading a book), " +
+              "'relax' (if a person is sitting without holding anything), " +
+              "'party' (if there are more than 2 people and no computer is detected), " +
+              "'drink' (if a person is holding a cup or bottle), " +
+              "'love' (if a person compares the shape of a heart with their hand), " +
+              "or 'music' (if a person is using headphones or speakers). " +
+              "Also, check if there is a computer. " +
+              "Provide a short description of the image. " +
+              "Return a JSON with the pose, computer presence, people count, and a brief description of the image.",
+      },
+      {
+        type: "image_url",
+        image_url: {
+          url: imageUrl,
+        },
+      },
+    ],
+  },
+];</code></pre>
+      </section>
+
+      <section class="section">
+        <h2>Adjusting the Projection Content</h2>
+        <p>Once a state is returned from the model, the system maps it to a corresponding ambient video and plays it in the projection window.</p>
+        <pre class="code-block"><code>function playVideo(state) {
+  if (!popupWindow || popupWindow.closed) {
+    initializePopupWindow();
+  }
+
+  const videoMap = {
+    work: "mood_video/work.mp4",
+    read: "mood_video/read.mp4",
+    relax: "mood_video/relax.mp4",
+    party: "mood_video/party.mp4",
+    music: "mood_video/music.mp4",
+    sleep: "mood_video/sleep.mp4",
+    dance: "mood_video/dance.mp4",
+    drink: "mood_video/drink.mp4",
+    love: "mood_video/love.mp4",
+  };
+
+  popupWindow.document.body.innerHTML = `
+    &lt;video width="100%" height="100%" autoplay muted loop playsinline&gt;
+      &lt;source src="${videoMap[state]}" type="video/mp4"&gt;
+    &lt;/video&gt;
+  `;
+}</code></pre>
+      </section>
+
+    </div>
+  </div>
+</article>
+
+<div id="imageModal" class="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage" alt="" />
+</div>
+
+<footer>
+  <div class="footer-left">
+    <p>© 2025 Zheng Chen</p>
+    <p>Designing for Intelligent Systems, Interaction & Mobility</p>
+  </div>
+  <div class="footer-right">
+    <p>
+      <a href="mailto:leonardochen00@gmail.com"><i class="fas fa-envelope"></i> Email</a> |
+      <a href="https://github.com/leonardo-chen"><i class="fab fa-github"></i> Github</a>
+    </p>
+  </div>
+</footer>
+
+<a href="javascript:history.back()" class="back-to-top back-button" title="Go Back">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+  </svg>
+</a>
+
+<script src="script.js"></script>
+<script>
+  function openModal(element) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const img = element.querySelector('img');
+    const backButton = document.querySelector('.back-button');
+    if (!img) return;
+    modal.style.display = 'block';
+    modalImg.src = img.src;
+    modalImg.alt = img.alt || '';
+    backButton.style.display = 'none';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    const backButton = document.querySelector('.back-button');
+    modal.style.display = 'none';
+    backButton.style.display = 'flex';
+  }
+
+  window.addEventListener('click', function (event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  function shareOnTwitter() {
+    const text = document.title || 'Wall Saver';
+    const url = window.location.href;
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank');
+  }
+
+  function shareOnLinkedIn() {
+    const url = window.location.href;
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url), '_blank');
+  }
+
+  function shareOnFacebook() {
+    const url = window.location.href;
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank');
+  }
+</script>
+</body>
+</html>
