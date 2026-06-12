@@ -1838,7 +1838,7 @@ body.dark-mode .contact-section .section-subtitle {
   padding: 2.5rem;
   display: flex;
   gap: 3rem;
-  align-items: center;
+  align-items: flex-start;
 }
 
 #profile-pic-container {
@@ -1879,6 +1879,15 @@ body.dark-mode .contact-section .section-subtitle {
   color: #666;
 }
 
+.intro-text .intro-closing {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  border-left: 3px solid #1844e3;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
 /* Dark mode styles */
 body.dark-mode .vision-card {
   background: rgba(30, 30, 30, 0.7);
@@ -1904,6 +1913,11 @@ body.dark-mode .intro-text strong {
 
 body.dark-mode .intro-text em {
   color: #aaa;
+}
+
+body.dark-mode .intro-text .intro-closing {
+  color: #f0f0f0;
+  border-left-color: #4d7cff;
 }
 
 /* Mobile styles */
