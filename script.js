@@ -2,6 +2,7 @@ const PORTFOLIO_PAGE_METADATA = {
   '/': { pageName: 'home', pageType: 'landing', contentGroup: 'portfolio' },
   '/index.html': { pageName: 'home', pageType: 'landing', contentGroup: 'portfolio' },
   '/projects.html': { pageName: 'projects', pageType: 'listing', contentGroup: 'portfolio' },
+  '/news.html': { pageName: 'news', pageType: 'listing', contentGroup: 'portfolio' },
   '/about.html': { pageName: 'about', pageType: 'about', contentGroup: 'portfolio' },
   '/contact.html': { pageName: 'contact', pageType: 'contact', contentGroup: 'portfolio' },
   '/privacy-policy.html': { pageName: 'privacy-policy', pageType: 'legal', contentGroup: 'portfolio' },
@@ -403,6 +404,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const minScale = 0.8;
       const scale = Math.max(minScale, 1 - (scrollY / maxScroll) * (1 - minScale));
       coverBg.style.transform = `scale(${scale})`;
+    });
+
+    const heroSlides = coverBg.querySelectorAll('.bg-slide');
+    const loadHeroSlideBg = (slide) => {
+      const src = slide.getAttribute('data-bg');
+      if (!src || slide.dataset.bgLoaded === 'true') {
+        return;
+      }
+      slide.dataset.bgLoaded = 'true';
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload = () => {
+        slide.style.backgroundImage = `url('${src}')`;
+      };
+      img.src = src;
+    };
+
+    heroSlides.forEach((slide, index) => {
+      if (!slide.hasAttribute('data-bg')) {
+        return;
+      }
+      const showDelayMs = index * 3000;
+      const loadDelayMs = Math.max(0, showDelayMs - 2500);
+      if (loadDelayMs === 0) {
+        loadHeroSlideBg(slide);
+      } else {
+        window.setTimeout(() => loadHeroSlideBg(slide), loadDelayMs);
+      }
     });
   }
 

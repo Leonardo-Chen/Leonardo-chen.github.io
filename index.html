@@ -22,10 +22,12 @@
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="preload" as="image" href="src/resource/hero/pixel_race.jpg" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" /></noscript>
   <script src="analytics-config.js"></script>
 </head>
 <body>
@@ -36,7 +38,7 @@
     <!-- Logo -->
     <div class="logo">
       <a href="index.html" aria-label="Home">
-        <img src="src/assets/logo_portfolio.png" alt="Zheng Chen Portfolio Logo"/>
+        <img src="src/assets/logo_nav.png" alt="Zheng Chen Portfolio Logo" width="50" height="50" decoding="async" />
       </a>
     </div>
 
@@ -45,9 +47,10 @@
       <div class="close-btn" id="close-menu">×</div>
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
+      <li><a href="news.html">News</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="src/resource/zheng_chen_cv.pdf">CV</a></li>
+      <li><a href="src/resource/cv_zheng_2026.pdf">CV</a></li>
     </ul>
 
     <!-- Controls -->
@@ -63,12 +66,11 @@
   <!-- Cover Section -->
   <section id="cover-section" class="cover-section">
     <div class="cover-bg" id="cover-bg">
-      <!-- <div class="bg-slide" style="background-image: url('src/resource/bg3.jpg');"></div> -->
-      <div class="bg-slide" style="background-image: url('src/resource/pixel_race.png');"></div>
-      <div class="bg-slide" style="background-image: url('src/resource/air_purier.PNG');"></div>
-      <div class="bg-slide" style="background-image: url('src/resource/bg1.jpg');"></div>
-      <div class="bg-slide" style="background-image: url('src/resource/bg2.png');"></div>
-      <div class="bg-slide" style="background-image: url('src/resource/tubi.gif');"></div>
+      <div class="bg-slide" style="background-image: url('src/resource/hero/pixel_race.jpg');"></div>
+      <div class="bg-slide" data-bg="src/resource/hero/air_purier.jpg"></div>
+      <div class="bg-slide" data-bg="src/resource/hero/bg1.jpg"></div>
+      <div class="bg-slide" data-bg="src/resource/hero/bg2.jpg"></div>
+      <div class="bg-slide bg-slide--gif" data-bg="src/resource/hero/tubi.gif"></div>
     </div>
     <div class="cover-content">
       <h1 class="headline-name fade-up">I'm <br> Zheng Chen</h1>
@@ -98,7 +100,7 @@
           <p class="en">Tubi is an interactive installation that blurs the line between reality and fiction. Inspired by AI-generated playgrounds, it reacts to visitors' movements with sounds and changing visuals, creating a surreal experience where the physical and digital worlds merge.</p>
         </div>
         <div class="project-img">
-          <img src="src/resource/tubi.png" alt="Web Design Project - Modern and interactive web design showcase" loading="lazy" />
+          <img src="src/resource/hero/tubi-card.jpg" alt="Web Design Project - Modern and interactive web design showcase" loading="lazy" decoding="async" width="800" height="600" />
         </div>
       </section>
     </a>
@@ -110,7 +112,7 @@
           <p class="en">A conversational companion for people with early-stage dementia, designed to support daily independence and family communication through multimodal interactions.</p>
         </div>
         <div class="project-img">
-          <img src="src/projects/Remi/DSC04796.JPG" alt="Remi dementia-care companion" loading="lazy" />
+          <img src="src/resource/hero/remi-card.jpg" alt="Remi dementia-care companion" loading="lazy" decoding="async" width="1200" height="800" />
         </div>
       </section>
     </a>
@@ -122,7 +124,7 @@
           <p class="en">A reproduction of the NS Nanotech Air Purifier.</p>
         </div>
         <div class="project-img">
-          <img src="src/resource/air_purier.PNG" alt="Air Purifier Project - AI-powered interactive installation for generating personalized travel destinations" loading="lazy" />
+          <img src="src/resource/hero/air_purier.jpg" alt="Air Purifier Project - AI-powered interactive installation for generating personalized travel destinations" loading="lazy" decoding="async" width="1920" height="1080" />
         </div>
       </section>
     </a>
@@ -134,7 +136,7 @@
           <p class="en">A 3D modeling project of Sony A7r IV using Fusion 360.</p>
         </div>
         <div class="project-img">
-          <img src="src/resource/bg1.jpg" alt="Sony A7r IV - Detailed 3D model created in Fusion 360" loading="lazy" />
+          <img src="src/resource/hero/bg1.jpg" alt="Sony A7r IV - Detailed 3D model created in Fusion 360" loading="lazy" decoding="async" width="1920" height="1080" />
         </div>
       </section>
     </a>
@@ -146,7 +148,7 @@
           <p class="en">A speculative design installation that uses AI to generate travel destinations based on your movement and touch.</p>
         </div>
         <div class="project-img">
-          <img src="src/resource/bg2.png" alt="Sony TC 150 Reproduction - AI-powered interactive installation" loading="lazy" />
+          <img src="src/resource/hero/bg2.jpg" alt="Sony TC 150 Reproduction - AI-powered interactive installation" loading="lazy" decoding="async" width="1920" height="1080" />
         </div>
       </section>
     </a>
@@ -158,7 +160,7 @@
           <p class="en">An interactive device which helps autistic children remember to train their emotional intelligence by associating situations and emotions.</p>
         </div>
         <div class="project-img">
-          <img src="src/resource/bg3.jpg" alt="Robotion - Interactive AI installation project" loading="lazy" />
+          <img src="src/resource/hero/bg3.jpg" alt="Robotion - Interactive AI installation project" loading="lazy" decoding="async" width="1920" height="1080" />
         </div>
       </section>
     </a>
@@ -170,7 +172,7 @@
           <p class="en">Rover.AI is an intelligent travel app that transforms user-generated content into personalized, real- time travel experiences. Designed for modern explorers, it helps you discover, plan, and adapt your journey with ease — all powered by AI.</p>
         </div>
         <div class="project-img">
-          <img src="src/projects/rover/rover1.jpg" alt="Rover.ai - AI-powered travel companion for personalized itineraries" loading="lazy" />
+          <img src="src/resource/hero/rover-card.jpg" alt="Rover.ai - AI-powered travel companion for personalized itineraries" loading="lazy" decoding="async" width="1200" height="800" />
         </div>
       </section>
     </a>
@@ -182,7 +184,7 @@
           <p class="en">A speculative design installation that uses AI to generate travel destinations based on your movement and touch.</p>
         </div>
         <div class="project-img">
-          <img src="src/resource/web.PNG" alt="Web Design Project - Modern and interactive web design showcase" loading="lazy" />
+          <img src="src/resource/hero/web-card.jpg" alt="Web Design Project - Modern and interactive web design showcase" loading="lazy" decoding="async" width="1200" height="800" />
         </div>
       </section>
     </a>
@@ -194,7 +196,7 @@
           <p class="en">A motion-controlled racing game on a custom LED matrix device, using accelerometer input and arcade-inspired visuals to create a playful handheld experience.</p>
         </div>
         <div class="project-img">
-          <img src="src/projects/Pixel_Race/pixel_race1.jpg" alt="Pixel Race handheld racing device" loading="lazy" />
+          <img src="src/resource/hero/pixel-race-card.jpg" alt="Pixel Race handheld racing device" loading="lazy" decoding="async" width="1200" height="800" />
         </div>
       </section>
     </a>
@@ -230,7 +232,7 @@
           <p class="en">Short audiovisual piece introducing Wuxi to an Italian audience—collage-style city portrait with Chinese visual motifs, inspired by João Pombeiro’s <em>Chicago</em> for Lance Skiiiwalker.</p>
         </div>
         <div class="project-img">
-          <img src="src/resource/wuxi1.png" alt="Wuxi — Audiovisual Short, frame from video" loading="lazy" />
+          <img src="src/resource/hero/wuxi-card.jpg" alt="Wuxi — Audiovisual Short, frame from video" loading="lazy" decoding="async" width="1200" height="800" />
         </div>
 
       </section>
@@ -241,7 +243,7 @@
   <!-- Footer -->
   <footer>
     <div class="footer-left">
-      <p>© 2025 Zheng Chen</p>
+      <p>© 2026 Zheng Chen</p>
       <p>Designing for Intelligent Systems, Interaction & Mobility</p>
     </div>
     <div class="footer-right">
