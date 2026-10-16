@@ -2259,9 +2259,15 @@ body.dark-mode .intro-text .intro-closing {
 
   .card-content {
     flex-direction: column;
+    align-items: stretch;
     padding: 1.5rem;
     gap: 2rem;
     text-align: left;
+  }
+
+  #profile-pic-container {
+    width: 100%;
+    justify-content: center;
   }
 
   #profile-pic {

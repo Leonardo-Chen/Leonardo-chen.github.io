@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /template.html
+Disallow: /article_template.html
+Disallow: /under_development.html
+Disallow: /porsche.html
+
+Sitemap: https://leonardo-chen.github.io/sitemap.xml
